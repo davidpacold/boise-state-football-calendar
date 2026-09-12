@@ -4,7 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -13,10 +13,12 @@ import requests
 from bs4 import BeautifulSoup
 
 SOURCE_URL = "https://broncosports.com/sports/football/schedule/text"
+ESPN_SCHEDULE_URL = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/68/schedule"
 OUTPUT_PATH = Path("docs/boise-state-football.ics")
 STATE_PATH = Path("state.json")
 TIMEZONE = "America/Denver"
 TEAM = "Boise State"
+ESPN_TEAM_ID = "68"
 MONTHS = {m: i for i, m in enumerate(("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"), 1)}
 
 
@@ -30,11 +32,14 @@ class Game:
     location: str
     tournament: str
     result: str
+    boise_rank: int | None = None
+    opponent_rank: int | None = None
+    betting_line: str = ""
 
     @property
     def uid(self) -> str:
         # Keep the historical UID format so existing subscribers receive updates
-        # instead of duplicate events after this multi-season change.
+        # instead of duplicate events after future generator improvements.
         return f"boisestate-football-{self.date}@boise-state-football-calendar"
 
     @property
@@ -135,6 +140,111 @@ def fetch_schedule(season: int, *, allow_missing: bool = False) -> list[Game]:
     return sorted(games, key=lambda g: (g.date, g.opponent))
 
 
+def parse_rank(competitor: dict) -> int | None:
+    value = competitor.get("curatedRank", {}).get("current")
+    try:
+        rank = int(value)
+    except (TypeError, ValueError):
+        return None
+    return rank if 1 <= rank <= 25 else None
+
+
+def espn_local_date(event: dict) -> str | None:
+    raw = event.get("date")
+    if not raw:
+        return None
+    try:
+        dt = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return dt.astimezone(ZoneInfo(TIMEZONE)).date().isoformat()
+
+
+def score_from_espn(boise: dict, opponent: dict, completed: bool) -> str:
+    if not completed:
+        return ""
+    try:
+        boise_score = int(boise.get("score"))
+        opponent_score = int(opponent.get("score"))
+    except (TypeError, ValueError):
+        return ""
+    outcome = "W" if boise_score > opponent_score else "L" if boise_score < opponent_score else "T"
+    return f"{outcome} {boise_score}-{opponent_score}"
+
+
+def betting_line_from_competition(competition: dict) -> str:
+    odds = competition.get("odds") or []
+    if not odds:
+        return ""
+    details = clean(str(odds[0].get("details") or ""))
+    return details
+
+
+def fetch_espn_enrichment(season: int) -> dict[str, dict]:
+    """Return ESPN metadata keyed by local game date.
+
+    ESPN is supplemental only. If it is unavailable or changes schema, the
+    official Boise State schedule still publishes normally.
+    """
+    try:
+        r = requests.get(
+            ESPN_SCHEDULE_URL,
+            params={"season": season},
+            timeout=30,
+            headers={"User-Agent": "BoiseStateFootballCalendar/1.0"},
+        )
+        r.raise_for_status()
+        payload = r.json()
+    except (requests.RequestException, ValueError) as exc:
+        print(f"Warning: ESPN enrichment unavailable for {season}: {exc}")
+        return {}
+
+    enriched: dict[str, dict] = {}
+    for event in payload.get("events", []):
+        local_date = espn_local_date(event)
+        competitions = event.get("competitions") or []
+        if not local_date or not competitions:
+            continue
+
+        competition = competitions[0]
+        competitors = competition.get("competitors") or []
+        boise = next((c for c in competitors if str(c.get("team", {}).get("id")) == ESPN_TEAM_ID), None)
+        opponent = next((c for c in competitors if str(c.get("team", {}).get("id")) != ESPN_TEAM_ID), None)
+        if not boise or not opponent:
+            continue
+
+        completed = bool((competition.get("status") or event.get("status") or {}).get("type", {}).get("completed"))
+        enriched[local_date] = {
+            "boise_rank": parse_rank(boise),
+            "opponent_rank": parse_rank(opponent),
+            "betting_line": "" if completed else betting_line_from_competition(competition),
+            "result": score_from_espn(boise, opponent, completed),
+        }
+
+    return enriched
+
+
+def enrich_games(games: list[Game]) -> list[Game]:
+    by_season: dict[int, dict[str, dict]] = {}
+    for season in sorted({g.season for g in games}):
+        by_season[season] = fetch_espn_enrichment(season)
+
+    enriched_games: list[Game] = []
+    for g in games:
+        info = by_season.get(g.season, {}).get(g.date, {})
+        official_result = g.result if g.result and g.result != "-" else ""
+        enriched_games.append(
+            replace(
+                g,
+                result=official_result or info.get("result", ""),
+                boise_rank=info.get("boise_rank"),
+                opponent_rank=info.get("opponent_rank"),
+                betting_line=info.get("betting_line", ""),
+            )
+        )
+    return enriched_games
+
+
 def esc(s: str) -> str:
     return s.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
 
@@ -152,8 +262,23 @@ def fold(line: str) -> list[str]:
     return out
 
 
+def ranked_name(name: str, rank: int | None) -> str:
+    return f"#{rank} {name}" if rank else name
+
+
+def matchup_title(g: Game) -> str:
+    boise = ranked_name(TEAM, g.boise_rank)
+    opponent = ranked_name(g.opponent, g.opponent_rank)
+    return f"{boise} at {opponent}" if g.site.lower() == "away" else f"{boise} vs {opponent}"
+
+
 def title(g: Game) -> str:
-    return f"{TEAM} at {g.opponent}" if g.site.lower() == "away" else f"{TEAM} vs {g.opponent}"
+    matchup = matchup_title(g)
+    if g.result and g.result != "-":
+        return f"{g.result} · {matchup}"
+    if g.betting_line:
+        return f"{matchup} · {g.betting_line}"
+    return matchup
 
 
 def load_state() -> dict:
@@ -216,10 +341,19 @@ def render(games: list[Game], state: dict) -> str:
         if g.tournament:
             desc.append(g.tournament)
         if g.result and g.result != "-":
-            desc.append(f"Result: {g.result}")
+            desc.append(f"Final: {g.result}")
+        else:
+            if g.boise_rank:
+                desc.append(f"Boise State rank: #{g.boise_rank}")
+            if g.opponent_rank:
+                desc.append(f"Opponent rank: #{g.opponent_rank}")
+            if g.betting_line:
+                desc.append(f"Betting line: {g.betting_line}")
         if "championship" in g.opponent.lower():
             desc.append("Appearance is conditional on qualification")
-        desc += [f"Season: {g.season}", "Source: Boise State Athletics", g.source_url]
+        desc += [f"Season: {g.season}", "Schedule source: Boise State Athletics", g.source_url]
+        if g.boise_rank or g.opponent_rank or g.betting_line:
+            desc.append("Rankings/odds source: ESPN")
         lines += [
             "BEGIN:VEVENT",
             f"UID:{g.uid}",
@@ -271,6 +405,7 @@ def main() -> None:
     if not games:
         raise RuntimeError(f"No games found for rolling seasons {seasons}")
 
+    games = enrich_games(games)
     state = update_state(games)
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(render(games, state), encoding="utf-8", newline="")
