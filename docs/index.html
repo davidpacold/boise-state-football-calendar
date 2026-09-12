@@ -1,11 +1,28 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Boise State Football Calendar</title></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boise State Football Calendar</title>
+  <meta name="description" content="Auto-updating Boise State football calendar subscription.">
+  <style>
+    :root { color-scheme: light dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; padding: 32px 20px; display: grid; place-items: center; min-height: 100vh; box-sizing: border-box; }
+    main { max-width: 680px; width: 100%; }
+    h1 { margin-bottom: 8px; }
+    p { line-height: 1.5; }
+    .button { display: inline-block; padding: 14px 18px; border-radius: 12px; background: #0b63ce; color: #fff; text-decoration: none; font-weight: 700; }
+    code { word-break: break-all; }
+    .muted { opacity: .72; }
+  </style>
+</head>
 <body>
-<h1>Boise State Football Calendar</h1>
-<p>This calendar is generated from Boise State Athletics and refreshed automatically.</p>
-<p><a href="boise-state-football.ics">Open the iCalendar feed</a></p>
-<p>Subscription URL:</p>
-<code>https://raw.githubusercontent.com/davidpacold/boise-state-football-calendar/main/docs/boise-state-football.ics</code>
+  <main>
+    <h1>Boise State Football Calendar</h1>
+    <p>Subscribe once and get schedule updates automatically as Boise State publishes kickoff times, opponents, and other changes.</p>
+    <p><a class="button" href="webcal://davidpacold.github.io/boise-state-football-calendar/boise-state-football.ics">Subscribe in Calendar</a></p>
+    <p class="muted">Direct calendar URL:<br><code>https://davidpacold.github.io/boise-state-football-calendar/boise-state-football.ics</code></p>
+    <p class="muted">Source data: Boise State Athletics. Kickoff times are interpreted in America/Denver and your calendar app displays them in your local timezone.</p>
+  </main>
 </body>
 </html>
