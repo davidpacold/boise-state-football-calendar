@@ -11,10 +11,33 @@ ESPN_CORE_ODDS_URL = (
     "https://sports.core.api.espn.com/v2/sports/football/leagues/college-football/"
     "events/{event_id}/competitions/{competition_id}/odds"
 )
-# Prefer FanDuel when ESPN exposes it, then fall back to the highest-priority
-# available provider. ESPN provider IDs: FanDuel=37, DraftKings=41,
-# BetMGM=58, ESPN BET=68.
 PREFERRED_PROVIDER_IDS = ("37", "41", "58", "68")
+BROWSER_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/140.0.0.0 Safari/537.36"
+    ),
+    "Accept": "application/json,text/plain,*/*",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://www.espn.com/",
+    "Origin": "https://www.espn.com",
+}
+
+_original_requests_get = requests.get
+
+
+def espn_friendly_get(url, *args, **kwargs):
+    if "espn.com" in str(url):
+        headers = dict(kwargs.pop("headers", {}) or {})
+        headers.update(BROWSER_HEADERS)
+        kwargs["headers"] = headers
+    return _original_requests_get(url, *args, **kwargs)
+
+
+# generate_calendar imports the requests module, so replacing get here also fixes
+# its schedule/scoreboard calls while leaving Boise State requests unchanged.
+calendar.requests.get = espn_friendly_get
 
 
 def clean_line(value: object) -> str:
@@ -22,7 +45,6 @@ def clean_line(value: object) -> str:
 
 
 def normalize_line(details: str) -> str:
-    """Keep ESPN's team abbreviation/spread but normalize minus characters."""
     return clean_line(details).replace("−", "-").replace("–", "-")
 
 
@@ -34,11 +56,11 @@ def fetch_core_odds(event: dict, competition: dict) -> str:
 
     url = ESPN_CORE_ODDS_URL.format(event_id=event_id, competition_id=competition_id)
     try:
-        response = requests.get(
+        response = _original_requests_get(
             url,
             params={"limit": 100},
             timeout=20,
-            headers={"User-Agent": "BoiseStateFootballCalendar/1.0"},
+            headers=BROWSER_HEADERS,
         )
         response.raise_for_status()
         payload = response.json()
