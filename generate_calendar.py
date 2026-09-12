@@ -14,11 +14,13 @@ from bs4 import BeautifulSoup
 
 SOURCE_URL = "https://broncosports.com/sports/football/schedule/text"
 ESPN_SCHEDULE_URL = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/68/schedule"
+ESPN_SCOREBOARD_URL = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard"
 OUTPUT_PATH = Path("docs/boise-state-football.ics")
 STATE_PATH = Path("state.json")
 TIMEZONE = "America/Denver"
 TEAM = "Boise State"
 ESPN_TEAM_ID = "68"
+ESPN_SCOREBOARD_LOOKAHEAD_DAYS = 21
 MONTHS = {m: i for i, m in enumerate(("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"), 1)}
 
 
@@ -176,12 +178,33 @@ def betting_line_from_competition(competition: dict) -> str:
     odds = competition.get("odds") or []
     if not odds:
         return ""
-    details = clean(str(odds[0].get("details") or ""))
-    return details
+    return clean(str(odds[0].get("details") or ""))
+
+
+def espn_event_info(event: dict) -> tuple[str | None, dict | None]:
+    local_date = espn_local_date(event)
+    competitions = event.get("competitions") or []
+    if not local_date or not competitions:
+        return None, None
+
+    competition = competitions[0]
+    competitors = competition.get("competitors") or []
+    boise = next((c for c in competitors if str(c.get("team", {}).get("id")) == ESPN_TEAM_ID), None)
+    opponent = next((c for c in competitors if str(c.get("team", {}).get("id")) != ESPN_TEAM_ID), None)
+    if not boise or not opponent:
+        return None, None
+
+    completed = bool((competition.get("status") or event.get("status") or {}).get("type", {}).get("completed"))
+    return local_date, {
+        "boise_rank": parse_rank(boise),
+        "opponent_rank": parse_rank(opponent),
+        "betting_line": "" if completed else betting_line_from_competition(competition),
+        "result": score_from_espn(boise, opponent, completed),
+    }
 
 
 def fetch_espn_enrichment(season: int) -> dict[str, dict]:
-    """Return ESPN metadata keyed by local game date.
+    """Return ESPN season metadata keyed by local game date.
 
     ESPN is supplemental only. If it is unavailable or changes schema, the
     official Boise State schedule still publishes normally.
@@ -201,27 +224,49 @@ def fetch_espn_enrichment(season: int) -> dict[str, dict]:
 
     enriched: dict[str, dict] = {}
     for event in payload.get("events", []):
-        local_date = espn_local_date(event)
-        competitions = event.get("competitions") or []
-        if not local_date or not competitions:
-            continue
-
-        competition = competitions[0]
-        competitors = competition.get("competitors") or []
-        boise = next((c for c in competitors if str(c.get("team", {}).get("id")) == ESPN_TEAM_ID), None)
-        opponent = next((c for c in competitors if str(c.get("team", {}).get("id")) != ESPN_TEAM_ID), None)
-        if not boise or not opponent:
-            continue
-
-        completed = bool((competition.get("status") or event.get("status") or {}).get("type", {}).get("completed"))
-        enriched[local_date] = {
-            "boise_rank": parse_rank(boise),
-            "opponent_rank": parse_rank(opponent),
-            "betting_line": "" if completed else betting_line_from_competition(competition),
-            "result": score_from_espn(boise, opponent, completed),
-        }
-
+        local_date, info = espn_event_info(event)
+        if local_date and info:
+            enriched[local_date] = info
     return enriched
+
+
+def fetch_espn_scoreboard_date(date_str: str) -> dict:
+    """Fetch fresher ranking/odds data for one near-term Boise State game."""
+    try:
+        r = requests.get(
+            ESPN_SCOREBOARD_URL,
+            params={
+                "dates": date_str.replace("-", ""),
+                "groups": 50,
+                "limit": 500,
+            },
+            timeout=30,
+            headers={"User-Agent": "BoiseStateFootballCalendar/1.0"},
+        )
+        r.raise_for_status()
+        payload = r.json()
+    except (requests.RequestException, ValueError) as exc:
+        print(f"Warning: ESPN scoreboard unavailable for {date_str}: {exc}")
+        return {}
+
+    for event in payload.get("events", []):
+        local_date, info = espn_event_info(event)
+        if local_date == date_str and info:
+            return info
+    return {}
+
+
+def merge_espn_info(base: dict, fresh: dict) -> dict:
+    if not fresh:
+        return base
+    merged = dict(base)
+    for key in ("boise_rank", "opponent_rank"):
+        if fresh.get(key) is not None:
+            merged[key] = fresh[key]
+    for key in ("betting_line", "result"):
+        if fresh.get(key):
+            merged[key] = fresh[key]
+    return merged
 
 
 def enrich_games(games: list[Game]) -> list[Game]:
@@ -229,9 +274,19 @@ def enrich_games(games: list[Game]) -> list[Game]:
     for season in sorted({g.season for g in games}):
         by_season[season] = fetch_espn_enrichment(season)
 
+    today = datetime.now(ZoneInfo(TIMEZONE)).date()
+    scoreboard_end = today + timedelta(days=ESPN_SCOREBOARD_LOOKAHEAD_DAYS)
+    scoreboard_cache: dict[str, dict] = {}
+
     enriched_games: list[Game] = []
     for g in games:
         info = by_season.get(g.season, {}).get(g.date, {})
+        game_date = datetime.strptime(g.date, "%Y-%m-%d").date()
+        if today <= game_date <= scoreboard_end:
+            if g.date not in scoreboard_cache:
+                scoreboard_cache[g.date] = fetch_espn_scoreboard_date(g.date)
+            info = merge_espn_info(info, scoreboard_cache[g.date])
+
         official_result = g.result if g.result and g.result != "-" else ""
         enriched_games.append(
             replace(
