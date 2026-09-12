@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "generate_calendar.py"
+      - "generate_with_odds.py"
       - "requirements.txt"
       - "docs/**"
       - ".github/workflows/update-calendar.yml"
@@ -32,7 +33,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - run: python generate_calendar.py
+      - run: python generate_with_odds.py
       - name: Commit calendar changes
         run: |
           if git diff --quiet -- docs/boise-state-football.ics state.json; then
