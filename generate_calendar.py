@@ -237,7 +237,7 @@ def fetch_espn_scoreboard_date(date_str: str) -> dict:
             ESPN_SCOREBOARD_URL,
             params={
                 "dates": date_str.replace("-", ""),
-                "groups": 50,
+                "groups": 80,
                 "limit": 500,
             },
             timeout=30,
