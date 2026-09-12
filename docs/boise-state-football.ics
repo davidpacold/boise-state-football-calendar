@@ -237,13 +237,13 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-09-12@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20260912T000000Z
-SUMMARY:🏈 Boise State vs Memphis · 📺 USA Network · 🎲 BOIS -9.5
+SUMMARY:🏈 Boise State vs Memphis · 📺 USA Network · 🎲 BOIS -2.5
 DTSTART;TZID=America/Denver:20260912T160000
 DTEND;TZID=America/Denver:20260912T200000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
-DESCRIPTION:TV: USA Network | Betting line: BOIS -9.5 | Season: 2026 | Sc
+DESCRIPTION:TV: USA Network | Betting line: BOIS -2.5 | Season: 2026 | Sc
  hedule source: Boise State Athletics | https://broncosports.com/sports/f
  ootball/schedule/text/2026 | Rankings/odds source: ESPN | TV source: Boi
  se State Athletics / ESPN fallback
