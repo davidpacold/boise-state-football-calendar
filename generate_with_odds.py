@@ -3,13 +3,14 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import requests
 
 import generate_calendar as calendar
 
 ESPN_CORE_BASE = "https://sports.core.api.espn.com/v2/sports/football/leagues/college-football"
-ESPN_CORE_EVENTS_URL = f"{ESPN_CORE_BASE}/events"
 ESPN_CORE_ODDS_URL = f"{ESPN_CORE_BASE}/events/{{event_id}}/competitions/{{competition_id}}/odds"
 PREFERRED_PROVIDER_IDS = ("37", "41", "58", "68")
 BROWSER_HEADERS = {
@@ -28,12 +29,7 @@ _original_scoreboard_date = calendar.fetch_espn_scoreboard_date
 
 
 def espn_get(url: str, *, params: dict | None = None, timeout: int = 20):
-    return _original_requests_get(
-        url,
-        params=params,
-        timeout=timeout,
-        headers=BROWSER_HEADERS,
-    )
+    return _original_requests_get(url, params=params, timeout=timeout, headers=BROWSER_HEADERS)
 
 
 def espn_friendly_get(url, *args, **kwargs):
@@ -57,13 +53,11 @@ def normalize_line(details: str) -> str:
 
 def choose_odds_line(items: list[dict]) -> str:
     def provider_id(item: dict) -> str:
-        provider = item.get("provider") or {}
-        return str(provider.get("id") or "")
+        return str((item.get("provider") or {}).get("id") or "")
 
     def provider_priority(item: dict) -> int:
-        provider = item.get("provider") or {}
         try:
-            return int(provider.get("priority"))
+            return int((item.get("provider") or {}).get("priority"))
         except (TypeError, ValueError):
             return 999
 
@@ -85,6 +79,22 @@ def choose_odds_line(items: list[dict]) -> str:
         if re.search(r"\b[A-Z0-9]{2,6}\s+[+-]?\d+(?:\.\d+)?\b", details):
             return details
     return ""
+
+
+def ref_id(ref: str, marker: str) -> str:
+    match = re.search(rf"/{marker}/(\d+)(?:\?|$|/)", ref)
+    return match.group(1) if match else ""
+
+
+def event_local_date(event: dict) -> str:
+    raw = str(event.get("date") or "")
+    if not raw:
+        return ""
+    try:
+        dt = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+    except ValueError:
+        return ""
+    return dt.astimezone(ZoneInfo(calendar.TIMEZONE)).date().isoformat()
 
 
 def fetch_core_odds_by_ids(event_id: str, competition_id: str) -> str:
@@ -109,22 +119,16 @@ def fetch_core_odds(event: dict, competition: dict) -> str:
     return fetch_core_odds_by_ids(event_id, competition_id)
 
 
-def ref_id(ref: str, marker: str) -> str:
-    match = re.search(rf"/{marker}/(\d+)(?:\?|$|/)", ref)
-    return match.group(1) if match else ""
-
-
 def core_date_odds(date_str: str) -> str:
-    """Find Boise State's game from ESPN core events when site API is blocked."""
+    """Use Boise State's core team event feed to find the game and its odds."""
+    season = date_str[:4]
+    team_events_url = f"{ESPN_CORE_BASE}/seasons/{season}/teams/{calendar.ESPN_TEAM_ID}/events"
     try:
-        response = espn_get(
-            ESPN_CORE_EVENTS_URL,
-            params={"dates": date_str.replace("-", ""), "limit": 200},
-        )
+        response = espn_get(team_events_url, params={"limit": 50})
         response.raise_for_status()
         listing = response.json()
     except (requests.RequestException, ValueError) as exc:
-        print(f"Warning: ESPN core events unavailable for {date_str}: {exc}")
+        print(f"Warning: ESPN core Boise events unavailable for {season}: {exc}")
         return ""
 
     for item in listing.get("items") or []:
@@ -138,34 +142,24 @@ def core_date_odds(date_str: str) -> str:
             event = event_response.json()
         except (requests.RequestException, ValueError):
             continue
+        if event_local_date(event) != date_str:
+            continue
 
         competitions = event.get("competitions") or []
-        competition_refs: list[str] = []
-        for competition in competitions:
-            if isinstance(competition, dict) and competition.get("$ref"):
-                competition_refs.append(str(competition["$ref"]))
+        competition_refs = [
+            str(c.get("$ref")) for c in competitions
+            if isinstance(c, dict) and c.get("$ref")
+        ]
         if not competition_refs:
-            competition_refs.append(
-                f"{ESPN_CORE_BASE}/events/{event_id}/competitions/{event_id}"
-            )
+            competition_refs = [f"{ESPN_CORE_BASE}/events/{event_id}/competitions/{event_id}"]
 
         for competition_ref in competition_refs:
             competition_id = ref_id(competition_ref, "competitions") or event_id
-            try:
-                competition_response = espn_get(competition_ref.replace("http://", "https://"))
-                competition_response.raise_for_status()
-                competition = competition_response.json()
-            except (requests.RequestException, ValueError):
-                continue
-
-            # Core competition payloads reference team 68 in competitor/team refs.
-            blob = json.dumps(competition, separators=(",", ":"))
-            if not re.search(r"(?:/teams/|/competitors/)68(?:\?|\"|/)", blob):
-                continue
             line = fetch_core_odds_by_ids(event_id, competition_id)
             if line:
                 print(f"ESPN core odds for {date_str}: {line}")
                 return line
+        break
     return ""
 
 
