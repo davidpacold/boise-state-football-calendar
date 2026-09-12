@@ -27,163 +27,175 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:boisestate-football-2025-08-28@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20250828T000000Z
 SUMMARY:🔴 L 7-34 · Boise State at South Florida
 DTSTART;TZID=America/Denver:20250828T153000
 DTEND;TZID=America/Denver:20250828T193000
 LOCATION:Tampa\, Fla.
 DESCRIPTION:Final: L 7-34 | Season: 2025 | Schedule source: Boise State A
- thletics | https://broncosports.com/sports/football/schedule/text/2025
+ thletics | https://broncosports.com/sports/football/schedule/text/2025 |
+  TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-09-05@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20250905T000000Z
 SUMMARY:🟢 W 51-14 · Boise State vs Eastern Washington
 DTSTART;TZID=America/Denver:20250905T190000
 DTEND;TZID=America/Denver:20250905T230000
 LOCATION:Boise. Idaho (Albertsons Stadium)
 DESCRIPTION:Final: W 51-14 | Season: 2025 | Schedule source: Boise State 
- Athletics | https://broncosports.com/sports/football/schedule/text/2025
+ Athletics | https://broncosports.com/sports/football/schedule/text/2025 
+ | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-09-20@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20250920T000000Z
 SUMMARY:🟢 W 49-37 · Boise State at Air Force
 DTSTART;TZID=America/Denver:20250920T170000
 DTEND;TZID=America/Denver:20250920T210000
 LOCATION:USAFA\, Colo.
 DESCRIPTION:Final: W 49-37 | Season: 2025 | Schedule source: Boise State 
- Athletics | https://broncosports.com/sports/football/schedule/text/2025
+ Athletics | https://broncosports.com/sports/football/schedule/text/2025 
+ | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-09-27@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20250927T000000Z
 SUMMARY:🟢 W 47-14 · Boise State vs App State
 DTSTART;TZID=America/Denver:20250927T173000
 DTEND;TZID=America/Denver:20250927T213000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
 DESCRIPTION:Final: W 47-14 | Season: 2025 | Schedule source: Boise State 
- Athletics | https://broncosports.com/sports/football/schedule/text/2025
+ Athletics | https://broncosports.com/sports/football/schedule/text/2025 
+ | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-10-04@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20251004T000000Z
 SUMMARY:🔴 L 7-28 · Boise State at #21/21 Notre Dame
 DTSTART;TZID=America/Denver:20251004T133000
 DTEND;TZID=America/Denver:20251004T173000
 LOCATION:South Bend\, Ind.
 DESCRIPTION:Final: L 7-28 | Season: 2025 | Schedule source: Boise State A
- thletics | https://broncosports.com/sports/football/schedule/text/2025
+ thletics | https://broncosports.com/sports/football/schedule/text/2025 |
+  TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-10-11@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20251011T000000Z
 SUMMARY:🟢 W 41-25 · Boise State vs New Mexico
 DTSTART;TZID=America/Denver:20251011T194500
 DTEND;TZID=America/Denver:20251011T234500
 LOCATION:Boise\, Idaho (Albertsons Stadium)
 DESCRIPTION:Final: W 41-25 | Season: 2025 | Schedule source: Boise State 
- Athletics | https://broncosports.com/sports/football/schedule/text/2025
+ Athletics | https://broncosports.com/sports/football/schedule/text/2025 
+ | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-10-18@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20251018T000000Z
 SUMMARY:🟢 W 56-31 · Boise State vs UNLV
 DTSTART;TZID=America/Denver:20251018T133000
 DTEND;TZID=America/Denver:20251018T173000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
 DESCRIPTION:Final: W 56-31 | Season: 2025 | Schedule source: Boise State 
- Athletics | https://broncosports.com/sports/football/schedule/text/2025
+ Athletics | https://broncosports.com/sports/football/schedule/text/2025 
+ | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-10-24@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20251024T000000Z
 SUMMARY:🟢 W 24-3 · Boise State at Nevada
 DTSTART;TZID=America/Denver:20251024T200000
 DTEND;TZID=America/Denver:20251025T000000
 LOCATION:Reno\, Nev.
 DESCRIPTION:Final: W 24-3 | Season: 2025 | Schedule source: Boise State A
- thletics | https://broncosports.com/sports/football/schedule/text/2025
+ thletics | https://broncosports.com/sports/football/schedule/text/2025 |
+  TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-11-01@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20251101T000000Z
 SUMMARY:🔴 L 7-30 · Boise State vs Fresno State
 DTSTART;TZID=America/Denver:20251101T133000
 DTEND;TZID=America/Denver:20251101T173000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
 DESCRIPTION:Final: L 7-30 | Season: 2025 | Schedule source: Boise State A
- thletics | https://broncosports.com/sports/football/schedule/text/2025
+ thletics | https://broncosports.com/sports/football/schedule/text/2025 |
+  TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-11-15@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20251115T000000Z
 SUMMARY:🔴 L 7-17 · Boise State at San Diego State
 DTSTART;TZID=America/Denver:20251115T203000
 DTEND;TZID=America/Denver:20251116T003000
 LOCATION:San Diego\, Calif.
 DESCRIPTION:Final: L 7-17 | Season: 2025 | Schedule source: Boise State A
- thletics | https://broncosports.com/sports/football/schedule/text/2025
+ thletics | https://broncosports.com/sports/football/schedule/text/2025 |
+  TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-11-22@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20251122T000000Z
 SUMMARY:🟢 W 49-21 · Boise State vs Colorado State
 DTSTART;TZID=America/Denver:20251122T170000
 DTEND;TZID=America/Denver:20251122T210000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
 DESCRIPTION:Final: W 49-21 | Season: 2025 | Schedule source: Boise State 
- Athletics | https://broncosports.com/sports/football/schedule/text/2025
+ Athletics | https://broncosports.com/sports/football/schedule/text/2025 
+ | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-11-28@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20251128T000000Z
 SUMMARY:🟢 W 25-24 · Boise State at Utah State
 DTSTART;TZID=America/Denver:20251128T140000
 DTEND;TZID=America/Denver:20251128T180000
 LOCATION:Logan\, Utah
 DESCRIPTION:Final: W 25-24 | Season: 2025 | Schedule source: Boise State 
- Athletics | https://broncosports.com/sports/football/schedule/text/2025
+ Athletics | https://broncosports.com/sports/football/schedule/text/2025 
+ | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-12-05@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20251205T000000Z
 SUMMARY:🟢 W 38-21 · Boise State vs UNLV
 DTSTART;TZID=America/Denver:20251205T180000
@@ -191,13 +203,14 @@ DTEND;TZID=America/Denver:20251205T220000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
 DESCRIPTION:Mountain West Football Championship | Final: W 38-21 | Season
  : 2025 | Schedule source: Boise State Athletics | https://broncosports.c
- om/sports/football/schedule/text/2025
+ om/sports/football/schedule/text/2025 | TV source: Boise State Athletics
+  / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-12-13@boise-state-football-calendar
-SEQUENCE:2
+SEQUENCE:3
 DTSTAMP:20251213T000000Z
 SUMMARY:🔴 L 10-38 · Boise State vs Washington
 DTSTART;TZID=America/Denver:20251213T180000
@@ -205,177 +218,197 @@ DTEND;TZID=America/Denver:20251213T220000
 LOCATION:Inglewood\, Calif. (SoFi Stadium)
 DESCRIPTION:Bucked Up LA Bowl Hosted by Gronk | Final: L 10-38 | Season: 
  2025 | Schedule source: Boise State Athletics | https://broncosports.com
- /sports/football/schedule/text/2025
+ /sports/football/schedule/text/2025 | TV source: Boise State Athletics /
+  ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-09-05@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20260905T000000Z
 SUMMARY:🔴 L 27-34 · Boise State at #2/2 Oregon
 DTSTART;TZID=America/Denver:20260905T133000
 DTEND;TZID=America/Denver:20260905T173000
 LOCATION:Eugene\, Ore.
 DESCRIPTION:Final: L 27-34 | Season: 2026 | Schedule source: Boise State 
- Athletics | https://broncosports.com/sports/football/schedule/text/2026
+ Athletics | https://broncosports.com/sports/football/schedule/text/2026 
+ | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-09-12@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20260912T000000Z
-SUMMARY:🏈 Boise State vs Memphis
+SUMMARY:🏈 Boise State vs Memphis · 📺 CBS/USA Network/CBS Sports Ne
+ twork/The CW
 DTSTART;TZID=America/Denver:20260912T160000
 DTEND;TZID=America/Denver:20260912T200000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
-DESCRIPTION:Season: 2026 | Schedule source: Boise State Athletics | https
- ://broncosports.com/sports/football/schedule/text/2026
+DESCRIPTION:TV: CBS/USA Network/CBS Sports Network/The CW | Season: 2026 
+ | Schedule source: Boise State Athletics | https://broncosports.com/spor
+ ts/football/schedule/text/2026 | TV source: Boise State Athletics / ESPN
+  fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-09-19@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20260919T000000Z
-SUMMARY:🏈 Boise State vs South Dakota
+SUMMARY:🏈 Boise State vs South Dakota · 📺 CBS Sports Network
 DTSTART;TZID=America/Denver:20260919T200000
 DTEND;TZID=America/Denver:20260920T000000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
-DESCRIPTION:Season: 2026 | Schedule source: Boise State Athletics | https
- ://broncosports.com/sports/football/schedule/text/2026
+DESCRIPTION:TV: CBS Sports Network | Season: 2026 | Schedule source: Bois
+ e State Athletics | https://broncosports.com/sports/football/schedule/te
+ xt/2026 | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-09-26@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20260926T000000Z
-SUMMARY:🏈 Boise State at Western Michigan
+SUMMARY:🏈 Boise State at Western Michigan · 📺 CBS/USA Network/CBS 
+ Sports Network/The CW
 DTSTART;VALUE=DATE:20260926
 DTEND;VALUE=DATE:20260927
 LOCATION:Kalamazoo\, Mich.
-DESCRIPTION:Kickoff time TBA | Season: 2026 | Schedule source: Boise Stat
- e Athletics | https://broncosports.com/sports/football/schedule/text/202
- 6
+DESCRIPTION:Kickoff time TBA | TV: CBS/USA Network/CBS Sports Network/The
+  CW | Season: 2026 | Schedule source: Boise State Athletics | https://br
+ oncosports.com/sports/football/schedule/text/2026 | TV source: Boise Sta
+ te Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-03@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20261003T000000Z
-SUMMARY:🏈 Boise State vs Utah State
+SUMMARY:🏈 Boise State vs Utah State · 📺 CBS Sports Network
 DTSTART;TZID=America/Denver:20261003T173000
 DTEND;TZID=America/Denver:20261003T213000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
-DESCRIPTION:Season: 2026 | Schedule source: Boise State Athletics | https
- ://broncosports.com/sports/football/schedule/text/2026
+DESCRIPTION:TV: CBS Sports Network | Season: 2026 | Schedule source: Bois
+ e State Athletics | https://broncosports.com/sports/football/schedule/te
+ xt/2026 | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-10@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20261010T000000Z
-SUMMARY:🏈 Boise State at Fresno State
+SUMMARY:🏈 Boise State at Fresno State · 📺 The CW
 DTSTART;TZID=America/Denver:20261010T203000
 DTEND;TZID=America/Denver:20261011T003000
 LOCATION:Fresno\, Calif.
-DESCRIPTION:Season: 2026 | Schedule source: Boise State Athletics | https
- ://broncosports.com/sports/football/schedule/text/2026
+DESCRIPTION:TV: The CW | Season: 2026 | Schedule source: Boise State Athl
+ etics | https://broncosports.com/sports/football/schedule/text/2026 | TV
+  source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-24@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20261024T000000Z
-SUMMARY:🏈 Boise State at Washington State
+SUMMARY:🏈 Boise State at Washington State · 📺 USA Network
 DTSTART;TZID=America/Denver:20261024T160000
 DTEND;TZID=America/Denver:20261024T200000
 LOCATION:Pullman\, Wash.
-DESCRIPTION:Season: 2026 | Schedule source: Boise State Athletics | https
- ://broncosports.com/sports/football/schedule/text/2026
+DESCRIPTION:TV: USA Network | Season: 2026 | Schedule source: Boise State
+  Athletics | https://broncosports.com/sports/football/schedule/text/2026
+  | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-31@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20261031T000000Z
-SUMMARY:🏈 Boise State vs Texas State
+SUMMARY:🏈 Boise State vs Texas State · 📺 The CW
 DTSTART;TZID=America/Denver:20261031T200000
 DTEND;TZID=America/Denver:20261101T000000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
-DESCRIPTION:Season: 2026 | Schedule source: Boise State Athletics | https
- ://broncosports.com/sports/football/schedule/text/2026
+DESCRIPTION:TV: The CW | Season: 2026 | Schedule source: Boise State Athl
+ etics | https://broncosports.com/sports/football/schedule/text/2026 | TV
+  source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-11-07@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20261107T000000Z
-SUMMARY:🏈 Boise State at Colorado State
+SUMMARY:🏈 Boise State at Colorado State · 📺 USA Network
 DTSTART;TZID=America/Denver:20261107T160000
 DTEND;TZID=America/Denver:20261107T200000
 LOCATION:Fort Collins\, Colo.
-DESCRIPTION:Season: 2026 | Schedule source: Boise State Athletics | https
- ://broncosports.com/sports/football/schedule/text/2026
+DESCRIPTION:TV: USA Network | Season: 2026 | Schedule source: Boise State
+  Athletics | https://broncosports.com/sports/football/schedule/text/2026
+  | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-11-14@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20261114T000000Z
-SUMMARY:🏈 Boise State vs Oregon State
+SUMMARY:🏈 Boise State vs Oregon State · 📺 USA Network
 DTSTART;TZID=America/Denver:20261114T160000
 DTEND;TZID=America/Denver:20261114T200000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
-DESCRIPTION:Season: 2026 | Schedule source: Boise State Athletics | https
- ://broncosports.com/sports/football/schedule/text/2026
+DESCRIPTION:TV: USA Network | Season: 2026 | Schedule source: Boise State
+  Athletics | https://broncosports.com/sports/football/schedule/text/2026
+  | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-11-21@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20261121T000000Z
-SUMMARY:🏈 Boise State vs San Diego State
+SUMMARY:🏈 Boise State vs San Diego State · 📺 USA Network
 DTSTART;TZID=America/Denver:20261121T193000
 DTEND;TZID=America/Denver:20261121T233000
 LOCATION:Boise\, Idaho (Albertsons Stadium)
-DESCRIPTION:Season: 2026 | Schedule source: Boise State Athletics | https
- ://broncosports.com/sports/football/schedule/text/2026
+DESCRIPTION:TV: USA Network | Season: 2026 | Schedule source: Boise State
+  Athletics | https://broncosports.com/sports/football/schedule/text/2026
+  | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-11-28@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20261128T000000Z
-SUMMARY:🏈 Boise State at Flex Game
+SUMMARY:🏈 Boise State at Flex Game · 📺 CBS/USA Network/CBS Sports 
+ Network/The CW
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
-DESCRIPTION:Kickoff time TBA | Season: 2026 | Schedule source: Boise Stat
- e Athletics | https://broncosports.com/sports/football/schedule/text/202
- 6
+DESCRIPTION:Kickoff time TBA | TV: CBS/USA Network/CBS Sports Network/The
+  CW | Season: 2026 | Schedule source: Boise State Athletics | https://br
+ oncosports.com/sports/football/schedule/text/2026 | TV source: Boise Sta
+ te Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-12-04@boise-state-football-calendar
-SEQUENCE:3
+SEQUENCE:4
 DTSTAMP:20261204T000000Z
-SUMMARY:🏈 Boise State vs Pac-12 Championship
+SUMMARY:🏈 Boise State vs Pac-12 Championship · 📺 CBS/USA Network/C
+ BS Sports Network/The CW
 DTSTART;TZID=America/Denver:20261204T180000
 DTEND;TZID=America/Denver:20261204T220000
-DESCRIPTION:Pac-12 Championship | Appearance is conditional on qualificat
- ion | Season: 2026 | Schedule source: Boise State Athletics | https://br
- oncosports.com/sports/football/schedule/text/2026
+DESCRIPTION:Pac-12 Championship | TV: CBS/USA Network/CBS Sports Network/
+ The CW | Appearance is conditional on qualification | Season: 2026 | Sch
+ edule source: Boise State Athletics | https://broncosports.com/sports/fo
+ otball/schedule/text/2026 | TV source: Boise State Athletics / ESPN fall
+ back
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 END:VEVENT
