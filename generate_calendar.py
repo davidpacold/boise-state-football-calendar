@@ -157,27 +157,8 @@ def normalize_network(name: str) -> str:
     return aliases.get(key, "")
 
 
-def networks_in_element(element) -> list[str]:
-    networks: list[str] = []
-    for img in element.find_all("img"):
-        network = normalize_network(str(img.get("alt") or ""))
-        if network and network not in networks:
-            networks.append(network)
-    for node in element.find_all(["a", "span", "div"]):
-        for raw in (node.get("title"), node.get("aria-label")):
-            network = normalize_network(str(raw or ""))
-            if network and network not in networks:
-                networks.append(network)
-    return networks
-
-
 def fetch_official_tv_networks(season: int, games: list[Game]) -> dict[str, str]:
-    """Read TV networks from Boise State's full schedule page.
-
-    The text schedule omits television data. The full schedule includes network
-    logos, so locate the opponent text and walk upward until its nearest
-    containing element exposes a recognized network logo/label.
-    """
+    """Read TV networks from Boise State's full schedule page."""
     if not games:
         return {}
     try:
@@ -192,6 +173,7 @@ def fetch_official_tv_networks(season: int, games: list[Game]) -> dict[str, str]
         print(f"Warning: Boise State TV data unavailable for {season}: {exc}")
         return {}
 
+    opponent_names = {normalized_opponent(g.opponent).lower() for g in games}
     networks: dict[str, str] = {}
     for g in games:
         opponent = normalized_opponent(g.opponent)
@@ -200,24 +182,31 @@ def fetch_official_tv_networks(season: int, games: list[Game]) -> dict[str, str]
         text_nodes = soup.find_all(
             string=lambda value: bool(value) and clean(str(value)).lower() == opponent.lower()
         )
-        if not text_nodes:
-            text_nodes = soup.find_all(
-                string=lambda value: bool(value) and opponent.lower() in clean(str(value)).lower()
-            )
-        found: list[str] = []
         for text_node in text_nodes:
-            element = text_node.parent
-            for _ in range(10):
-                if element is None or getattr(element, "name", None) in {"body", "html"}:
+            found = ""
+            seen = 0
+            for element in text_node.next_elements:
+                seen += 1
+                if seen > 300:
                     break
-                found = networks_in_element(element)
+                tag_name = getattr(element, "name", None)
+                if tag_name is None:
+                    value = clean(str(element)).lower()
+                    if value in opponent_names and value != opponent.lower():
+                        break
+                    continue
+                if tag_name == "img":
+                    found = normalize_network(str(element.get("alt") or ""))
+                if not found:
+                    for raw in (element.get("title"), element.get("aria-label")):
+                        found = normalize_network(str(raw or ""))
+                        if found:
+                            break
                 if found:
                     break
-                element = element.parent
             if found:
+                networks[g.date] = found
                 break
-        if found:
-            networks[g.date] = "/".join(found)
 
     if networks:
         print(f"Boise State TV networks for {season}: {len(networks)}")
