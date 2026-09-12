@@ -157,11 +157,26 @@ def normalize_network(name: str) -> str:
     return aliases.get(key, "")
 
 
+def networks_in_element(element) -> list[str]:
+    networks: list[str] = []
+    for img in element.find_all("img"):
+        network = normalize_network(str(img.get("alt") or ""))
+        if network and network not in networks:
+            networks.append(network)
+    for node in element.find_all(["a", "span", "div"]):
+        for raw in (node.get("title"), node.get("aria-label")):
+            network = normalize_network(str(raw or ""))
+            if network and network not in networks:
+                networks.append(network)
+    return networks
+
+
 def fetch_official_tv_networks(season: int, games: list[Game]) -> dict[str, str]:
     """Read TV networks from Boise State's full schedule page.
 
-    Boise State's text schedule omits television data, while the full Sidearm
-    schedule page includes network-logo alt text inside each game card.
+    The text schedule omits television data. The full schedule includes network
+    logos, so locate the opponent text and walk upward until its nearest
+    containing element exposes a recognized network logo/label.
     """
     if not games:
         return {}
@@ -178,29 +193,34 @@ def fetch_official_tv_networks(season: int, games: list[Game]) -> dict[str, str]
         return {}
 
     networks: dict[str, str] = {}
-    cards = soup.select(".sidearm-schedule-game")
     for g in games:
-        opponent = normalized_opponent(g.opponent).lower()
+        opponent = normalized_opponent(g.opponent)
         if not opponent:
             continue
-        matching_cards = [
-            card for card in cards
-            if opponent in clean(card.get_text(" ", strip=True)).lower()
-        ]
-        for card in matching_cards:
-            candidates: list[str] = []
-            for img in card.find_all("img"):
-                network = normalize_network(str(img.get("alt") or ""))
-                if network and network not in candidates:
-                    candidates.append(network)
-            for element in card.find_all(["a", "span", "div"]):
-                for raw in (element.get("title"), element.get("aria-label")):
-                    network = normalize_network(str(raw or ""))
-                    if network and network not in candidates:
-                        candidates.append(network)
-            if candidates:
-                networks[g.date] = "/".join(candidates)
+        text_nodes = soup.find_all(
+            string=lambda value: bool(value) and clean(str(value)).lower() == opponent.lower()
+        )
+        if not text_nodes:
+            text_nodes = soup.find_all(
+                string=lambda value: bool(value) and opponent.lower() in clean(str(value)).lower()
+            )
+        found: list[str] = []
+        for text_node in text_nodes:
+            element = text_node.parent
+            for _ in range(10):
+                if element is None or getattr(element, "name", None) in {"body", "html"}:
+                    break
+                found = networks_in_element(element)
+                if found:
+                    break
+                element = element.parent
+            if found:
                 break
+        if found:
+            networks[g.date] = "/".join(found)
+
+    if networks:
+        print(f"Boise State TV networks for {season}: {len(networks)}")
     return networks
 
 
@@ -276,8 +296,12 @@ def espn_event_info(event: dict) -> tuple[str | None, dict | None]:
 
 def fetch_espn_enrichment(season: int) -> dict[str, dict]:
     try:
-        r = requests.get(ESPN_SCHEDULE_URL, params={"season": season}, timeout=30,
-                         headers={"User-Agent": "BoiseStateFootballCalendar/1.0"})
+        r = requests.get(
+            ESPN_SCHEDULE_URL,
+            params={"season": season},
+            timeout=30,
+            headers={"User-Agent": "BoiseStateFootballCalendar/1.0"},
+        )
         r.raise_for_status()
         payload = r.json()
     except (requests.RequestException, ValueError) as exc:
