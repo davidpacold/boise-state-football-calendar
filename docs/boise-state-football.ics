@@ -1,0 +1,196 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+PRODID:-//Boise State Football Calendar//GitHub//EN
+X-WR-CALNAME:Boise State Football 2026
+X-WR-TIMEZONE:America/Denver
+REFRESH-INTERVAL;VALUE=DURATION:PT3H
+X-PUBLISHED-TTL:PT3H
+BEGIN:VTIMEZONE
+TZID:America/Denver
+X-LIC-LOCATION:America/Denver
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0600
+TZNAME:MDT
+DTSTART:20070311T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0700
+TZNAME:MST
+DTSTART:20071104T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:boisestate-football-2026-09-05@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20260905T000000Z
+SUMMARY:Boise State at #2/2 Oregon
+DTSTART;TZID=America/Denver:20260905T133000
+DTEND;TZID=America/Denver:20260905T173000
+LOCATION:Eugene\, Ore.
+DESCRIPTION:Result: L 27-34 | Source: Boise State Athletics | https://bro
+ ncosports.com/sports/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-09-12@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20260912T000000Z
+SUMMARY:Boise State vs Memphis
+DTSTART;TZID=America/Denver:20260912T160000
+DTEND;TZID=America/Denver:20260912T200000
+LOCATION:Boise\, Idaho (Albertsons Stadium)
+DESCRIPTION:Source: Boise State Athletics | https://broncosports.com/spor
+ ts/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-09-19@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20260919T000000Z
+SUMMARY:Boise State vs South Dakota
+DTSTART;TZID=America/Denver:20260919T200000
+DTEND;TZID=America/Denver:20260920T000000
+LOCATION:Boise\, Idaho (Albertsons Stadium)
+DESCRIPTION:Source: Boise State Athletics | https://broncosports.com/spor
+ ts/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-09-26@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20260926T000000Z
+SUMMARY:Boise State at Western Michigan
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+LOCATION:Kalamazoo\, Mich.
+DESCRIPTION:Kickoff time TBA | Source: Boise State Athletics | https://br
+ oncosports.com/sports/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-10-03@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20261003T000000Z
+SUMMARY:Boise State vs Utah State
+DTSTART;TZID=America/Denver:20261003T173000
+DTEND;TZID=America/Denver:20261003T213000
+LOCATION:Boise\, Idaho (Albertsons Stadium)
+DESCRIPTION:Source: Boise State Athletics | https://broncosports.com/spor
+ ts/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-10-10@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20261010T000000Z
+SUMMARY:Boise State at Fresno State
+DTSTART;TZID=America/Denver:20261010T203000
+DTEND;TZID=America/Denver:20261011T003000
+LOCATION:Fresno\, Calif.
+DESCRIPTION:Source: Boise State Athletics | https://broncosports.com/spor
+ ts/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-10-24@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20261024T000000Z
+SUMMARY:Boise State at Washington State
+DTSTART;TZID=America/Denver:20261024T160000
+DTEND;TZID=America/Denver:20261024T200000
+LOCATION:Pullman\, Wash.
+DESCRIPTION:Source: Boise State Athletics | https://broncosports.com/spor
+ ts/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-10-31@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20261031T000000Z
+SUMMARY:Boise State vs Texas State
+DTSTART;TZID=America/Denver:20261031T200000
+DTEND;TZID=America/Denver:20261101T000000
+LOCATION:Boise\, Idaho (Albertsons Stadium)
+DESCRIPTION:Source: Boise State Athletics | https://broncosports.com/spor
+ ts/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-11-07@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20261107T000000Z
+SUMMARY:Boise State at Colorado State
+DTSTART;TZID=America/Denver:20261107T160000
+DTEND;TZID=America/Denver:20261107T200000
+LOCATION:Fort Collins\, Colo.
+DESCRIPTION:Source: Boise State Athletics | https://broncosports.com/spor
+ ts/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-11-14@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20261114T000000Z
+SUMMARY:Boise State vs Oregon State
+DTSTART;TZID=America/Denver:20261114T160000
+DTEND;TZID=America/Denver:20261114T200000
+LOCATION:Boise\, Idaho (Albertsons Stadium)
+DESCRIPTION:Source: Boise State Athletics | https://broncosports.com/spor
+ ts/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-11-21@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20261121T000000Z
+SUMMARY:Boise State vs San Diego State
+DTSTART;TZID=America/Denver:20261121T193000
+DTEND;TZID=America/Denver:20261121T233000
+LOCATION:Boise\, Idaho (Albertsons Stadium)
+DESCRIPTION:Source: Boise State Athletics | https://broncosports.com/spor
+ ts/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-11-28@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20261128T000000Z
+SUMMARY:Boise State at Flex Game
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+DESCRIPTION:Kickoff time TBA | Source: Boise State Athletics | https://br
+ oncosports.com/sports/football/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:boisestate-football-2026-12-04@boise-state-football-calendar
+SEQUENCE:0
+DTSTAMP:20261204T000000Z
+SUMMARY:Boise State vs Pac-12 Championship
+DTSTART;TZID=America/Denver:20261204T180000
+DTEND;TZID=America/Denver:20261204T220000
+DESCRIPTION:Pac-12 Championship | Appearance is conditional on qualificat
+ ion | Source: Boise State Athletics | https://broncosports.com/sports/fo
+ otball/schedule/text
+URL:https://broncosports.com/sports/football/schedule/text
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
