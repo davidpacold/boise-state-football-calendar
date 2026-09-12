@@ -6,6 +6,7 @@ on:
     paths:
       - "generate_calendar.py"
       - "requirements.txt"
+      - "docs/**"
       - ".github/workflows/update-calendar.yml"
   schedule:
     - cron: "17 */3 * * *"
@@ -13,10 +14,15 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,11 +37,20 @@ jobs:
         run: |
           if git diff --quiet -- docs/boise-state-football.ics state.json; then
             echo "No schedule changes."
-            exit 0
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add docs/boise-state-football.ics state.json
+            git commit -m "Update Boise State football calendar"
+            git pull --rebase origin main
+            git push origin main
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/boise-state-football.ics state.json
-          git commit -m "Update Boise State football calendar"
-          git pull --rebase origin main
-          git push origin main
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
