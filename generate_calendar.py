@@ -37,6 +37,7 @@ class Game:
     boise_rank: int | None = None
     opponent_rank: int | None = None
     betting_line: str = ""
+    tv_network: str = ""
 
     @property
     def uid(self) -> str:
@@ -61,12 +62,9 @@ def clean(s: str) -> str:
 def parse_kickoff(time_raw: str) -> str | None:
     if not time_raw or time_raw.upper() in {"TBA", "TBD", "-"}:
         return None
-
-    # Handles forms such as "7 p.m. MT", "3:30 PM", and "1 p.m.".
     m = re.search(r"\b(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m\.?\b", time_raw, re.I)
     if not m:
         raise RuntimeError(f"Could not parse kickoff time: {time_raw}")
-
     hour = int(m.group(1))
     minute = int(m.group(2) or 0)
     if not 1 <= hour <= 12 or not 0 <= minute <= 59:
@@ -84,7 +82,6 @@ def fetch_schedule(season: int, *, allow_missing: bool = False) -> list[Game]:
     if allow_missing and r.status_code == 404:
         return []
     r.raise_for_status()
-
     soup = BeautifulSoup(r.text, "html.parser")
     page_text = clean(soup.get_text(" ", strip=True))
     m = re.search(r"\b(20\d{2})\s+Football Schedule\b", page_text, re.I)
@@ -92,53 +89,41 @@ def fetch_schedule(season: int, *, allow_missing: bool = False) -> list[Game]:
         if allow_missing:
             return []
         raise RuntimeError(f"Could not determine season for {url}")
-
     page_season = int(m.group(1))
     if page_season != season:
         raise RuntimeError(f"Requested {season} schedule but Boise State returned {page_season}")
-
     table = soup.find("table")
     if table is None:
         if allow_missing:
             return []
         raise RuntimeError(f"Could not find schedule table for {season}")
-
     headers = [clean(th.get_text(" ", strip=True)).lower() for th in table.find_all("th")]
     hm = {name: i for i, name in enumerate(headers)}
     games: list[Game] = []
-
     for tr in table.find_all("tr"):
         cells = [clean(td.get_text(" ", strip=True)) for td in tr.find_all("td")]
         if not cells:
             continue
-
         def get(name: str, fallback: int) -> str:
             i = hm.get(name, fallback)
             return cells[i] if i < len(cells) else ""
-
         date_raw = get("date", 0)
         dm = re.search(r"\b([A-Z][a-z]{2})\s+(\d{1,2})\b", date_raw)
         if not dm or dm.group(1) not in MONTHS:
             continue
-
         month = MONTHS[dm.group(1)]
-        # January/February postseason games belong to the prior fall's season.
         game_year = season + 1 if month <= 2 else season
         d = datetime(game_year, month, int(dm.group(2)))
-
-        games.append(
-            Game(
-                season=season,
-                date=d.strftime("%Y-%m-%d"),
-                time=parse_kickoff(get("time", 1)),
-                site=get("at", 2) or "Neutral",
-                opponent=get("opponent", 3),
-                location=get("location", 4),
-                tournament=get("tournament", 5),
-                result=get("result", 6),
-            )
-        )
-
+        games.append(Game(
+            season=season,
+            date=d.strftime("%Y-%m-%d"),
+            time=parse_kickoff(get("time", 1)),
+            site=get("at", 2) or "Neutral",
+            opponent=get("opponent", 3),
+            location=get("location", 4),
+            tournament=get("tournament", 5),
+            result=get("result", 6),
+        ))
     return sorted(games, key=lambda g: (g.date, g.opponent))
 
 
@@ -181,47 +166,46 @@ def betting_line_from_competition(competition: dict) -> str:
     return clean(str(odds[0].get("details") or ""))
 
 
+def tv_network_from_event(event: dict, competition: dict) -> str:
+    names: list[str] = []
+    for broadcast in competition.get("broadcasts") or event.get("broadcasts") or []:
+        for name in broadcast.get("names") or []:
+            name = clean(str(name))
+            if name and name not in names:
+                names.append(name)
+    return "/".join(names)
+
+
 def espn_event_info(event: dict) -> tuple[str | None, dict | None]:
     local_date = espn_local_date(event)
     competitions = event.get("competitions") or []
     if not local_date or not competitions:
         return None, None
-
     competition = competitions[0]
     competitors = competition.get("competitors") or []
     boise = next((c for c in competitors if str(c.get("team", {}).get("id")) == ESPN_TEAM_ID), None)
     opponent = next((c for c in competitors if str(c.get("team", {}).get("id")) != ESPN_TEAM_ID), None)
     if not boise or not opponent:
         return None, None
-
     completed = bool((competition.get("status") or event.get("status") or {}).get("type", {}).get("completed"))
     return local_date, {
         "boise_rank": parse_rank(boise),
         "opponent_rank": parse_rank(opponent),
         "betting_line": "" if completed else betting_line_from_competition(competition),
+        "tv_network": tv_network_from_event(event, competition),
         "result": score_from_espn(boise, opponent, completed),
     }
 
 
 def fetch_espn_enrichment(season: int) -> dict[str, dict]:
-    """Return ESPN season metadata keyed by local game date.
-
-    ESPN is supplemental only. If it is unavailable or changes schema, the
-    official Boise State schedule still publishes normally.
-    """
     try:
-        r = requests.get(
-            ESPN_SCHEDULE_URL,
-            params={"season": season},
-            timeout=30,
-            headers={"User-Agent": "BoiseStateFootballCalendar/1.0"},
-        )
+        r = requests.get(ESPN_SCHEDULE_URL, params={"season": season}, timeout=30,
+                         headers={"User-Agent": "BoiseStateFootballCalendar/1.0"})
         r.raise_for_status()
         payload = r.json()
     except (requests.RequestException, ValueError) as exc:
         print(f"Warning: ESPN enrichment unavailable for {season}: {exc}")
         return {}
-
     enriched: dict[str, dict] = {}
     for event in payload.get("events", []):
         local_date, info = espn_event_info(event)
@@ -231,24 +215,15 @@ def fetch_espn_enrichment(season: int) -> dict[str, dict]:
 
 
 def fetch_espn_scoreboard_date(date_str: str) -> dict:
-    """Fetch fresher ranking/odds data for one near-term Boise State game."""
     try:
-        r = requests.get(
-            ESPN_SCOREBOARD_URL,
-            params={
-                "dates": date_str.replace("-", ""),
-                "groups": 80,
-                "limit": 500,
-            },
-            timeout=30,
-            headers={"User-Agent": "BoiseStateFootballCalendar/1.0"},
-        )
+        r = requests.get(ESPN_SCOREBOARD_URL,
+            params={"dates": date_str.replace("-", ""), "groups": 80, "limit": 500},
+            timeout=30, headers={"User-Agent": "BoiseStateFootballCalendar/1.0"})
         r.raise_for_status()
         payload = r.json()
     except (requests.RequestException, ValueError) as exc:
         print(f"Warning: ESPN scoreboard unavailable for {date_str}: {exc}")
         return {}
-
     for event in payload.get("events", []):
         local_date, info = espn_event_info(event)
         if local_date == date_str and info:
@@ -263,7 +238,7 @@ def merge_espn_info(base: dict, fresh: dict) -> dict:
     for key in ("boise_rank", "opponent_rank"):
         if fresh.get(key) is not None:
             merged[key] = fresh[key]
-    for key in ("betting_line", "result"):
+    for key in ("betting_line", "tv_network", "result"):
         if fresh.get(key):
             merged[key] = fresh[key]
     return merged
@@ -273,11 +248,9 @@ def enrich_games(games: list[Game]) -> list[Game]:
     by_season: dict[int, dict[str, dict]] = {}
     for season in sorted({g.season for g in games}):
         by_season[season] = fetch_espn_enrichment(season)
-
     today = datetime.now(ZoneInfo(TIMEZONE)).date()
     scoreboard_end = today + timedelta(days=ESPN_SCOREBOARD_LOOKAHEAD_DAYS)
     scoreboard_cache: dict[str, dict] = {}
-
     enriched_games: list[Game] = []
     for g in games:
         info = by_season.get(g.season, {}).get(g.date, {})
@@ -286,17 +259,15 @@ def enrich_games(games: list[Game]) -> list[Game]:
             if g.date not in scoreboard_cache:
                 scoreboard_cache[g.date] = fetch_espn_scoreboard_date(g.date)
             info = merge_espn_info(info, scoreboard_cache[g.date])
-
         official_result = g.result if g.result and g.result != "-" else ""
-        enriched_games.append(
-            replace(
-                g,
-                result=official_result or info.get("result", ""),
-                boise_rank=info.get("boise_rank"),
-                opponent_rank=info.get("opponent_rank"),
-                betting_line=info.get("betting_line", ""),
-            )
-        )
+        enriched_games.append(replace(
+            g,
+            result=official_result or info.get("result", ""),
+            boise_rank=info.get("boise_rank"),
+            opponent_rank=info.get("opponent_rank"),
+            betting_line=info.get("betting_line", ""),
+            tv_network=info.get("tv_network", ""),
+        ))
     return enriched_games
 
 
@@ -330,10 +301,15 @@ def matchup_title(g: Game) -> str:
 def title(g: Game) -> str:
     matchup = matchup_title(g)
     if g.result and g.result != "-":
-        return f"{g.result} · {matchup}"
+        outcome = g.result.strip().upper()[:1]
+        emoji = "🟢" if outcome == "W" else "🔴" if outcome == "L" else "🏈"
+        return f"{emoji} {g.result} · {matchup}"
+    parts = [f"🏈 {matchup}"]
+    if g.tv_network:
+        parts.append(f"📺 {g.tv_network}")
     if g.betting_line:
-        return f"{matchup} · {g.betting_line}"
-    return matchup
+        parts.append(f"🎲 {g.betting_line}")
+    return " · ".join(parts)
 
 
 def load_state() -> dict:
@@ -359,32 +335,15 @@ def update_state(games: list[Game]) -> dict:
 
 def render(games: list[Game], state: dict) -> str:
     lines = [
-        "BEGIN:VCALENDAR",
-        "VERSION:2.0",
-        "CALSCALE:GREGORIAN",
-        "METHOD:PUBLISH",
+        "BEGIN:VCALENDAR", "VERSION:2.0", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
         "PRODID:-//Boise State Football Calendar//GitHub//EN",
-        "X-WR-CALNAME:Boise State Football",
-        "X-WR-TIMEZONE:America/Denver",
-        "REFRESH-INTERVAL;VALUE=DURATION:PT3H",
-        "X-PUBLISHED-TTL:PT3H",
-        "BEGIN:VTIMEZONE",
-        "TZID:America/Denver",
-        "X-LIC-LOCATION:America/Denver",
-        "BEGIN:DAYLIGHT",
-        "TZOFFSETFROM:-0700",
-        "TZOFFSETTO:-0600",
-        "TZNAME:MDT",
-        "DTSTART:20070311T020000",
-        "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU",
-        "END:DAYLIGHT",
-        "BEGIN:STANDARD",
-        "TZOFFSETFROM:-0600",
-        "TZOFFSETTO:-0700",
-        "TZNAME:MST",
-        "DTSTART:20071104T020000",
-        "RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU",
-        "END:STANDARD",
+        "X-WR-CALNAME:Boise State Football", "X-WR-TIMEZONE:America/Denver",
+        "REFRESH-INTERVAL;VALUE=DURATION:PT3H", "X-PUBLISHED-TTL:PT3H",
+        "BEGIN:VTIMEZONE", "TZID:America/Denver", "X-LIC-LOCATION:America/Denver",
+        "BEGIN:DAYLIGHT", "TZOFFSETFROM:-0700", "TZOFFSETTO:-0600", "TZNAME:MDT",
+        "DTSTART:20070311T020000", "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU", "END:DAYLIGHT",
+        "BEGIN:STANDARD", "TZOFFSETFROM:-0600", "TZOFFSETTO:-0700", "TZNAME:MST",
+        "DTSTART:20071104T020000", "RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU", "END:STANDARD",
         "END:VTIMEZONE",
     ]
     tz = ZoneInfo(TIMEZONE)
@@ -402,42 +361,32 @@ def render(games: list[Game], state: dict) -> str:
                 desc.append(f"Boise State rank: #{g.boise_rank}")
             if g.opponent_rank:
                 desc.append(f"Opponent rank: #{g.opponent_rank}")
+            if g.tv_network:
+                desc.append(f"TV: {g.tv_network}")
             if g.betting_line:
                 desc.append(f"Betting line: {g.betting_line}")
         if "championship" in g.opponent.lower():
             desc.append("Appearance is conditional on qualification")
         desc += [f"Season: {g.season}", "Schedule source: Boise State Athletics", g.source_url]
-        if g.boise_rank or g.opponent_rank or g.betting_line:
-            desc.append("Rankings/odds source: ESPN")
+        if g.boise_rank or g.opponent_rank or g.betting_line or g.tv_network:
+            desc.append("Rankings/odds/TV source: ESPN")
         lines += [
-            "BEGIN:VEVENT",
-            f"UID:{g.uid}",
-            f"SEQUENCE:{state['events'][g.uid]['sequence']}",
-            f"DTSTAMP:{d.strftime('%Y%m%d')}T000000Z",
-            f"SUMMARY:{esc(title(g))}",
+            "BEGIN:VEVENT", f"UID:{g.uid}", f"SEQUENCE:{state['events'][g.uid]['sequence']}",
+            f"DTSTAMP:{d.strftime('%Y%m%d')}T000000Z", f"SUMMARY:{esc(title(g))}",
         ]
         if g.time is None:
-            lines += [
-                f"DTSTART;VALUE=DATE:{d.strftime('%Y%m%d')}",
-                f"DTEND;VALUE=DATE:{(d + timedelta(days=1)).strftime('%Y%m%d')}",
-            ]
+            lines += [f"DTSTART;VALUE=DATE:{d.strftime('%Y%m%d')}",
+                      f"DTEND;VALUE=DATE:{(d + timedelta(days=1)).strftime('%Y%m%d')}"]
         else:
             hh, mm = map(int, g.time.split(":"))
             start = datetime(d.year, d.month, d.day, hh, mm, tzinfo=tz)
             end = start + timedelta(hours=4)
-            lines += [
-                f"DTSTART;TZID={TIMEZONE}:{start.strftime('%Y%m%dT%H%M%S')}",
-                f"DTEND;TZID={TIMEZONE}:{end.strftime('%Y%m%dT%H%M%S')}",
-            ]
+            lines += [f"DTSTART;TZID={TIMEZONE}:{start.strftime('%Y%m%dT%H%M%S')}",
+                      f"DTEND;TZID={TIMEZONE}:{end.strftime('%Y%m%dT%H%M%S')}"]
         if g.location and g.location.upper() != "TBD":
             lines.append(f"LOCATION:{esc(g.location)}")
-        lines += [
-            f"DESCRIPTION:{esc(' | '.join(desc))}",
-            f"URL:{g.source_url}",
-            "TRANSP:TRANSPARENT",
-            "END:VEVENT",
-        ]
-
+        lines += [f"DESCRIPTION:{esc(' | '.join(desc))}", f"URL:{g.source_url}",
+                  "TRANSP:TRANSPARENT", "END:VEVENT"]
     lines.append("END:VCALENDAR")
     return "\r\n".join(part for line in lines for part in fold(line)) + "\r\n"
 
@@ -445,26 +394,17 @@ def render(games: list[Game], state: dict) -> str:
 def main() -> None:
     current_year = datetime.now(ZoneInfo(TIMEZONE)).year
     seasons = (current_year - 1, current_year, current_year + 1)
-
     games_by_season: dict[int, list[Game]] = {}
     for season in seasons:
-        games_by_season[season] = fetch_schedule(
-            season,
-            allow_missing=(season == current_year + 1),
-        )
-
-    games = sorted(
-        (game for season_games in games_by_season.values() for game in season_games),
-        key=lambda g: (g.date, g.opponent),
-    )
+        games_by_season[season] = fetch_schedule(season, allow_missing=(season == current_year + 1))
+    games = sorted((game for season_games in games_by_season.values() for game in season_games),
+                   key=lambda g: (g.date, g.opponent))
     if not games:
         raise RuntimeError(f"No games found for rolling seasons {seasons}")
-
     games = enrich_games(games)
     state = update_state(games)
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(render(games, state), encoding="utf-8", newline="")
-
     counts = ", ".join(f"{season}: {len(games_by_season[season])}" for season in seasons)
     print(f"Published {len(games)} games across rolling seasons ({counts})")
 
