@@ -33,6 +33,9 @@ SUMMARY:🔴 L 7-34 · Boise State at South Florida
 DTSTART;TZID=America/Denver:20250828T153000
 DTEND;TZID=America/Denver:20250828T193000
 LOCATION:Tampa\, Fla.
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=4201 N Dale Mabry Hwy\, T
+ ampa\, FL 33607;X-APPLE-RADIUS=150;X-TITLE=Raymond James Stadium:geo:27.
+ 975900,-82.503300
 DESCRIPTION:Final: L 7-34 | Season: 2025 | Schedule source: Boise State A
  thletics | https://broncosports.com/sports/football/schedule/text/2025 |
   TV source: Boise State Athletics / ESPN fallback
@@ -64,6 +67,9 @@ SUMMARY:🟢 W 49-37 · Boise State at Air Force
 DTSTART;TZID=America/Denver:20250920T170000
 DTEND;TZID=America/Denver:20250920T210000
 LOCATION:USAFA\, Colo.
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=2169 Field House Dr\, USA
+ F Academy\, CO 80840;X-APPLE-RADIUS=150;X-TITLE=Falcon Stadium:geo:38.99
+ 6900,-104.843700
 DESCRIPTION:Final: W 49-37 | Season: 2025 | Schedule source: Boise State 
  Athletics | https://broncosports.com/sports/football/schedule/text/2025 
  | TV source: Boise State Athletics / ESPN fallback
@@ -143,6 +149,9 @@ SUMMARY:🟢 W 24-3 · Boise State at Nevada
 DTSTART;TZID=America/Denver:20251024T200000
 DTEND;TZID=America/Denver:20251025T000000
 LOCATION:Reno\, Nev.
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=1664 N Virginia St\, Reno
+ \, NV 89557;X-APPLE-RADIUS=150;X-TITLE=Mackay Stadium:geo:39.546900,-119
+ .817900
 DESCRIPTION:Final: W 24-3 | Season: 2025 | Schedule source: Boise State A
  thletics | https://broncosports.com/sports/football/schedule/text/2025 |
   TV source: Boise State Athletics / ESPN fallback
@@ -174,6 +183,9 @@ SUMMARY:🔴 L 7-17 · Boise State at San Diego State
 DTSTART;TZID=America/Denver:20251115T203000
 DTEND;TZID=America/Denver:20251116T003000
 LOCATION:San Diego\, Calif.
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=2101 Stadium Way\, San Di
+ ego\, CA 92108;X-APPLE-RADIUS=150;X-TITLE=Snapdragon Stadium:geo:32.7841
+ 00,-117.122700
 DESCRIPTION:Final: L 7-17 | Season: 2025 | Schedule source: Boise State A
  thletics | https://broncosports.com/sports/football/schedule/text/2025 |
   TV source: Boise State Athletics / ESPN fallback
@@ -252,6 +264,9 @@ SUMMARY:🔴 L 27-34 · Boise State at #2/2 Oregon
 DTSTART;TZID=America/Denver:20260905T133000
 DTEND;TZID=America/Denver:20260905T173000
 LOCATION:Eugene\, Ore.
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=2727 Leo Harris Pkwy\, Eu
+ gene\, OR 97401;X-APPLE-RADIUS=150;X-TITLE=Autzen Stadium:geo:44.058300,
+ -123.068500
 DESCRIPTION:Final: L 27-34 | Season: 2026 | Schedule source: Boise State 
  Athletics | https://broncosports.com/sports/football/schedule/text/2026 
  | Rankings/odds source: ESPN
@@ -301,6 +316,9 @@ SUMMARY:🏈 Boise State at Western Michigan
 DTSTART;VALUE=DATE:20260926
 DTEND;VALUE=DATE:20260927
 LOCATION:Kalamazoo\, Mich.
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=1903 W Michigan Ave\, Kal
+ amazoo\, MI 49008;X-APPLE-RADIUS=150;X-TITLE=Waldo Stadium:geo:42.285800
+ ,-85.601700
 DESCRIPTION:Kickoff time TBA | Season: 2026 | Schedule source: Boise Stat
  e Athletics | https://broncosports.com/sports/football/schedule/text/202
  6
@@ -332,6 +350,9 @@ SUMMARY:🏈 Boise State at Fresno State · 📺 The CW
 DTSTART;TZID=America/Denver:20261010T203000
 DTEND;TZID=America/Denver:20261011T003000
 LOCATION:Fresno\, Calif.
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=1620 E Bulldog Ln\, Fresn
+ o\, CA 93740;X-APPLE-RADIUS=150;X-TITLE=Valley Children's Stadium:geo:36
+ .814000,-119.758000
 DESCRIPTION:TV: The CW | Season: 2026 | Schedule source: Boise State Athl
  etics | https://broncosports.com/sports/football/schedule/text/2026 | TV
   source: Boise State Athletics / ESPN fallback
@@ -346,6 +367,9 @@ SUMMARY:🏈 Boise State at Washington State · 📺 USA Network
 DTSTART;TZID=America/Denver:20261024T160000
 DTEND;TZID=America/Denver:20261024T200000
 LOCATION:Pullman\, Wash.
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=1775 NE Stadium Way\, Pul
+ lman\, WA 99164;X-APPLE-RADIUS=150;X-TITLE=Martin Stadium:geo:46.731800,
+ -117.160500
 DESCRIPTION:TV: USA Network | Season: 2026 | Schedule source: Boise State
   Athletics | https://broncosports.com/sports/football/schedule/text/2026
   | TV source: Boise State Athletics / ESPN fallback
@@ -377,6 +401,9 @@ SUMMARY:🏈 Boise State at Colorado State · 📺 USA Network
 DTSTART;TZID=America/Denver:20261107T160000
 DTEND;TZID=America/Denver:20261107T200000
 LOCATION:Fort Collins\, Colo.
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=751 W Pitkin St\, Fort Co
+ llins\, CO 80521;X-APPLE-RADIUS=150;X-TITLE=Canvas Stadium:geo:40.570000
+ ,-105.088800
 DESCRIPTION:TV: USA Network | Season: 2026 | Schedule source: Boise State
   Athletics | https://broncosports.com/sports/football/schedule/text/2026
   | TV source: Boise State Athletics / ESPN fallback
