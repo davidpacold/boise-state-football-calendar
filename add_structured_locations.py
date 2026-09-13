@@ -21,12 +21,70 @@ HEADERS = {
     "Referer": "https://www.espn.com/",
 }
 
-# Reliable fallback for every Boise State home game.
 ALBERTSONS = {
     "title": "Albertsons Stadium",
     "address": "1400 Bronco Ln, Boise, ID 83706",
     "latitude": 43.6028,
     "longitude": -116.1958,
+}
+
+# Stable venue fallbacks for cities on Boise State's current rolling schedule.
+# ESPN core venue metadata remains the first choice when it includes coordinates.
+VENUE_BY_LOCATION = {
+    "Eugene, Ore.": {
+        "title": "Autzen Stadium",
+        "address": "2727 Leo Harris Pkwy, Eugene, OR 97401",
+        "latitude": 44.0583,
+        "longitude": -123.0685,
+    },
+    "Kalamazoo, Mich.": {
+        "title": "Waldo Stadium",
+        "address": "1903 W Michigan Ave, Kalamazoo, MI 49008",
+        "latitude": 42.2858,
+        "longitude": -85.6017,
+    },
+    "Fresno, Calif.": {
+        "title": "Valley Children's Stadium",
+        "address": "1620 E Bulldog Ln, Fresno, CA 93740",
+        "latitude": 36.8140,
+        "longitude": -119.7580,
+    },
+    "Pullman, Wash.": {
+        "title": "Martin Stadium",
+        "address": "1775 NE Stadium Way, Pullman, WA 99164",
+        "latitude": 46.7318,
+        "longitude": -117.1605,
+    },
+    "Fort Collins, Colo.": {
+        "title": "Canvas Stadium",
+        "address": "751 W Pitkin St, Fort Collins, CO 80521",
+        "latitude": 40.5700,
+        "longitude": -105.0888,
+    },
+    "Reno, Nev.": {
+        "title": "Mackay Stadium",
+        "address": "1664 N Virginia St, Reno, NV 89557",
+        "latitude": 39.5469,
+        "longitude": -119.8179,
+    },
+    "USAFA, Colo.": {
+        "title": "Falcon Stadium",
+        "address": "2169 Field House Dr, USAF Academy, CO 80840",
+        "latitude": 38.9969,
+        "longitude": -104.8437,
+    },
+    "Tampa, Fla.": {
+        "title": "Raymond James Stadium",
+        "address": "4201 N Dale Mabry Hwy, Tampa, FL 33607",
+        "latitude": 27.9759,
+        "longitude": -82.5033,
+    },
+    "San Diego, Calif.": {
+        "title": "Snapdragon Stadium",
+        "address": "2101 Stadium Way, San Diego, CA 92108",
+        "latitude": 32.7841,
+        "longitude": -117.1227,
+    },
 }
 
 
@@ -48,11 +106,6 @@ def local_date(raw: str) -> str:
     return dt.astimezone(ZoneInfo(TIMEZONE)).date().isoformat()
 
 
-def ref_id(ref: str, marker: str) -> str:
-    match = re.search(rf"/{marker}/(\d+)(?:\?|$|/)", ref)
-    return match.group(1) if match else ""
-
-
 def full_address(address: dict) -> str:
     parts = []
     for key in ("address1", "address2", "city", "state", "postalCode", "country"):
@@ -66,19 +119,16 @@ def venue_from_payload(payload: dict) -> dict | None:
     title = clean(payload.get("fullName") or payload.get("name"))
     address = payload.get("address") or {}
     address_text = full_address(address)
-
     latitude = payload.get("latitude")
     longitude = payload.get("longitude")
     geo = payload.get("geo") or {}
     latitude = latitude if latitude is not None else geo.get("latitude")
     longitude = longitude if longitude is not None else geo.get("longitude")
-
     try:
         latitude = float(latitude)
         longitude = float(longitude)
     except (TypeError, ValueError):
         return None
-
     if not title:
         return None
     return {
@@ -94,8 +144,7 @@ def resolve_ref(ref: str) -> dict:
 
 
 def venue_for_event(event: dict) -> dict | None:
-    competitions = event.get("competitions") or []
-    for competition in competitions:
+    for competition in event.get("competitions") or []:
         if not isinstance(competition, dict):
             continue
         if competition.get("$ref"):
@@ -103,7 +152,6 @@ def venue_for_event(event: dict) -> dict | None:
                 competition = resolve_ref(str(competition["$ref"]))
             except (requests.RequestException, ValueError):
                 continue
-
         venue = competition.get("venue") or {}
         if isinstance(venue, dict) and venue.get("$ref"):
             try:
@@ -126,7 +174,6 @@ def fetch_venues(seasons: set[int]) -> dict[str, dict]:
         except (requests.RequestException, ValueError) as exc:
             print(f"Warning: venue listing unavailable for {season}: {exc}")
             continue
-
         for item in listing.get("items") or []:
             ref = clean((item or {}).get("$ref"))
             if not ref:
@@ -189,7 +236,6 @@ def structured_line(venue: dict) -> str:
 def main() -> None:
     text = ICS_PATH.read_text(encoding="utf-8")
     lines = unfold(text)
-
     dates = set(re.findall(r"UID:boisestate-football-(\d{4}-\d{2}-\d{2})@", "\n".join(lines)))
     seasons = {int(date[:4]) for date in dates}
     venues = fetch_venues(seasons)
@@ -210,7 +256,6 @@ def main() -> None:
             match = re.search(r"UID:boisestate-football-(\d{4}-\d{2}-\d{2})@", line)
             current_date = match.group(1) if match else ""
 
-        # Remove a previously-generated structured location before inserting the fresh one.
         if line.startswith("X-APPLE-STRUCTURED-LOCATION;"):
             continue
 
@@ -220,12 +265,15 @@ def main() -> None:
             venue = venues.get(current_date)
             if "Albertsons Stadium" in display_location:
                 venue = ALBERTSONS
+            elif not venue:
+                venue = VENUE_BY_LOCATION.get(display_location)
             if venue:
                 output.append(structured_line(venue))
 
     folded = "\r\n".join(part for line in output for part in fold(line)) + "\r\n"
     ICS_PATH.write_text(folded, encoding="utf-8", newline="")
-    print(f"Added Apple structured locations for {sum(1 for line in output if line.startswith('X-APPLE-STRUCTURED-LOCATION;'))} games")
+    count = sum(1 for line in output if line.startswith("X-APPLE-STRUCTURED-LOCATION;"))
+    print(f"Added Apple structured locations for {count} games")
 
 
 if __name__ == "__main__":
