@@ -11,7 +11,7 @@ on:
       - "docs/**"
       - ".github/workflows/update-calendar.yml"
   schedule:
-    - cron: "17 */3 * * *"
+    - cron: "0 12 * * 1"
   workflow_dispatch:
 
 permissions:
