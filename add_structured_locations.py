@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
+import json
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import requests
 
 ICS_PATH = Path("docs/boise-state-football.ics")
+STATE_PATH = Path("state.json")
 TIMEZONE = "America/Denver"
 TEAM_ID = "68"
 CORE_BASE = "https://sports.core.api.espn.com/v2/sports/football/leagues/college-football"
@@ -223,8 +226,8 @@ def ics_escape(value: str) -> str:
 
 
 def structured_line(venue: dict) -> str:
-    title = ics_escape(clean(venue["title"]))
-    address = ics_escape(clean(venue["address"]))
+    title = parameter_value(clean(venue["title"]))
+    address = parameter_value(clean(venue["address"]))
     lat = float(venue["latitude"])
     lon = float(venue["longitude"])
     return (
@@ -233,46 +236,88 @@ def structured_line(venue: dict) -> str:
     )
 
 
-def main() -> None:
-    text = ICS_PATH.read_text(encoding="utf-8")
-    lines = unfold(text)
-    dates = set(re.findall(r"UID:boisestate-football-(\d{4}-\d{2}-\d{2})@", "\n".join(lines)))
-    seasons = {int(date[:4]) for date in dates}
-    venues = fetch_venues(seasons)
+def parameter_value(value: str) -> str:
+    # Parameters use quoted strings and RFC 6868, not TEXT backslash escaping.
+    value = value.replace("^", "^^").replace('"', "^'").replace("\n", "^n")
+    return f'"{value}"'
 
+
+def location_lines(venue: dict) -> list[str]:
+    display = clean(venue["title"]) + "\n" + clean(venue["address"])
+    return [
+        f"LOCATION:{ics_escape(display)}",
+        structured_line(venue),
+        f"GEO:{float(venue['latitude']):.6f};{float(venue['longitude']):.6f}",
+    ]
+
+
+def enrich_event(event: list[str], venues: dict, state: dict, now: str) -> list[str]:
+    uid = next(line[4:] for line in event if line.startswith("UID:"))
+    match = re.match(r"boisestate-football-(\d{4}-\d{2}-\d{2})@", uid)
+    if not match:
+        return event
+    location = next((line for line in event if line.startswith("LOCATION:")), "")
+    display = location[9:].replace("\\,", ",")
+    venue = venues.get(match.group(1))
+    if "Albertsons Stadium" in display:
+        venue = ALBERTSONS
+    elif not venue:
+        venue = VENUE_BY_LOCATION.get(display)
+        if not venue:
+            venue = next((v for v in VENUE_BY_LOCATION.values()
+                          if location == location_lines(v)[0]), None)
+    properties = location_lines(venue) if venue else ([location] if location else [])
+    prior = state["events"][uid]
+    fingerprint = hashlib.sha256("\n".join(properties).encode()).hexdigest()
+    sequence = max(int(prior["sequence"]), int(next(
+        (line[9:] for line in event if line.startswith("SEQUENCE:")), "0")))
+    if prior.get("location_fingerprint") != fingerprint:
+        # Migrate existing subscriptions once, then update only on real changes.
+        if venue or "location_fingerprint" in prior:
+            sequence += 1
+            prior["location_modified"] = now
+        prior["location_fingerprint"] = fingerprint
+    prior["sequence"] = sequence
+    output = []
+    for line in event:
+        if line.startswith(("LOCATION:", "GEO:", "X-APPLE-STRUCTURED-LOCATION;", "LAST-MODIFIED:")):
+            continue
+        if line.startswith("SEQUENCE:"):
+            line = f"SEQUENCE:{sequence}"
+        if line == "END:VEVENT":
+            output.extend(properties)
+            if prior.get("location_modified"):
+                output.append(f"LAST-MODIFIED:{prior['location_modified']}")
+        output.append(line)
+    return output
+
+
+def enrich_calendar(text: str, venues: dict, state: dict) -> str:
     output: list[str] = []
-    current_date = ""
-    in_event = False
-    for line in lines:
+    event: list[str] = []
+    now = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    for line in unfold(text):
         if not line:
             continue
-        if line == "BEGIN:VEVENT":
-            in_event = True
-            current_date = ""
-        elif line == "END:VEVENT":
-            in_event = False
-            current_date = ""
-        elif in_event and line.startswith("UID:boisestate-football-"):
-            match = re.search(r"UID:boisestate-football-(\d{4}-\d{2}-\d{2})@", line)
-            current_date = match.group(1) if match else ""
+        if event or line == "BEGIN:VEVENT":
+            event.append(line)
+            if line == "END:VEVENT":
+                output.extend(enrich_event(event, venues, state, now))
+                event = []
+        else:
+            output.append(line)
+    return "\r\n".join(part for line in output for part in fold(line)) + "\r\n"
 
-        if line.startswith("X-APPLE-STRUCTURED-LOCATION;"):
-            continue
 
-        output.append(line)
-        if in_event and line.startswith("LOCATION:") and current_date:
-            display_location = line[9:].replace("\\,", ",")
-            venue = venues.get(current_date)
-            if "Albertsons Stadium" in display_location:
-                venue = ALBERTSONS
-            elif not venue:
-                venue = VENUE_BY_LOCATION.get(display_location)
-            if venue:
-                output.append(structured_line(venue))
-
-    folded = "\r\n".join(part for line in output for part in fold(line)) + "\r\n"
+def main() -> None:
+    text = ICS_PATH.read_text(encoding="utf-8")
+    dates = re.findall(r"UID:boisestate-football-(\d{4}-\d{2}-\d{2})@", text)
+    venues = fetch_venues({int(date[:4]) for date in dates})
+    state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+    folded = enrich_calendar(text, venues, state)
     ICS_PATH.write_text(folded, encoding="utf-8", newline="")
-    count = sum(1 for line in output if line.startswith("X-APPLE-STRUCTURED-LOCATION;"))
+    STATE_PATH.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n")
+    count = folded.count("X-APPLE-STRUCTURED-LOCATION;")
     print(f"Added Apple structured locations for {count} games")
 
 

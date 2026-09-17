@@ -428,7 +428,7 @@ def update_state(games: list[Game]) -> dict:
         seq = int(prior.get("sequence", 0))
         if prior and prior.get("fingerprint") != g.fingerprint:
             seq += 1
-        new[g.uid] = {"fingerprint": g.fingerprint, "sequence": seq}
+        new[g.uid] = {**prior, "fingerprint": g.fingerprint, "sequence": seq}
     state = {"events": new}
     STATE_PATH.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n")
     return state

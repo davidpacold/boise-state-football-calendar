@@ -8,6 +8,8 @@ on:
       - "generate_with_odds.py"
       - "add_structured_locations.py"
       - "requirements.txt"
+      - "requirements-dev.txt"
+      - "test_locations.py"
       - "docs/**"
       - ".github/workflows/update-calendar.yml"
   schedule:
@@ -33,7 +35,8 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install -r requirements.txt
+      - run: pip install -r requirements-dev.txt
+      - run: python -m unittest -v test_locations
       - run: python generate_with_odds.py
       - run: python add_structured_locations.py
       - name: Commit calendar changes
