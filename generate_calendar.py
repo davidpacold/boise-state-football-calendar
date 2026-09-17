@@ -46,7 +46,8 @@ class Game:
 
     @property
     def fingerprint(self) -> str:
-        raw = json.dumps(asdict(self), sort_keys=True, separators=(",", ":"))
+        data = {**asdict(self), "alert_policy": "kickoff-minus-30m-no-travel-v1"}
+        raw = json.dumps(data, sort_keys=True, separators=(",", ":"))
         return hashlib.sha256(raw.encode()).hexdigest()
 
     @property
@@ -496,8 +497,16 @@ def render(games: list[Game], state: dict) -> str:
             f"DESCRIPTION:{esc(' | '.join(desc))}",
             f"URL:{g.source_url}",
             "TRANSP:TRANSPARENT",
-            "END:VEVENT",
+            "X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED",
         ]
+        if g.time is not None:
+            lines += [
+                "BEGIN:VALARM", "ACTION:DISPLAY",
+                "TRIGGER;RELATED=START:-PT30M",
+                "DESCRIPTION:Boise State kickoff in 30 minutes",
+                "END:VALARM",
+            ]
+        lines.append("END:VEVENT")
     lines.append("END:VCALENDAR")
     return "\r\n".join(part for line in lines for part in fold(line)) + "\r\n"
 
