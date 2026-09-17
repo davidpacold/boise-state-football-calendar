@@ -46,7 +46,7 @@ class Game:
 
     @property
     def fingerprint(self) -> str:
-        data = {**asdict(self), "alert_policy": "kickoff-minus-30m-no-travel-v1"}
+        data = {**asdict(self), "alert_policy": "kickoff-minus-30m-no-travel-v2"}
         raw = json.dumps(data, sort_keys=True, separators=(",", ":"))
         return hashlib.sha256(raw.encode()).hexdigest()
 
@@ -498,6 +498,11 @@ def render(games: list[Game], state: dict) -> str:
             f"URL:{g.source_url}",
             "TRANSP:TRANSPARENT",
             "X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED",
+        ]
+        # Apple's inactive default alarm prevents an additional client reminder.
+        lines += [
+            "BEGIN:VALARM", "ACTION:NONE", "X-APPLE-DEFAULT-ALARM:TRUE",
+            "TRIGGER;VALUE=DATE-TIME:19760401T005545Z", "END:VALARM",
         ]
         if g.time is not None:
             lines += [

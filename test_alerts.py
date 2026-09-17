@@ -17,7 +17,11 @@ class AlertTests(unittest.TestCase):
 
     def test_timed_game_has_one_alert_before_kickoff_and_no_travel_advisory(self):
         event = self.event("19:30")
-        alarms = event.walk("VALARM")
+        alarms = [alarm for alarm in event.walk("VALARM") if alarm["ACTION"] == "DISPLAY"]
+        defaults = [alarm for alarm in event.walk("VALARM")
+                    if alarm.get("X-APPLE-DEFAULT-ALARM") == "TRUE"]
+        self.assertEqual(len(defaults), 1)
+        self.assertEqual(defaults[0]["ACTION"], "NONE")
         self.assertEqual(len(alarms), 1)
         self.assertEqual(alarms[0]["ACTION"], "DISPLAY")
         self.assertEqual(alarms[0]["TRIGGER"].dt, timedelta(minutes=-30))
@@ -26,7 +30,7 @@ class AlertTests(unittest.TestCase):
 
     def test_tba_game_has_no_midnight_or_travel_alert(self):
         event = self.event(None)
-        self.assertEqual(event.walk("VALARM"), [])
+        self.assertTrue(all(alarm["ACTION"] == "NONE" for alarm in event.walk("VALARM")))
         self.assertEqual(event["X-APPLE-TRAVEL-ADVISORY-BEHAVIOR"], "DISABLED")
 
 
