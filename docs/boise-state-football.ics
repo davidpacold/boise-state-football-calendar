@@ -318,14 +318,16 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-09-19@boise-state-football-calendar
-SEQUENCE:5
+SEQUENCE:6
 DTSTAMP:20260919T000000Z
-SUMMARY:🏈 Boise State vs South Dakota · 📺 CBS Sports Network
+SUMMARY:🏈 Boise State vs South Dakota · 📺 CBS Sports Network · 
+ 🎲 BOIS -23.5
 DTSTART;TZID=America/Denver:20260919T200000
 DTEND;TZID=America/Denver:20260920T000000
-DESCRIPTION:TV: CBS Sports Network | Season: 2026 | Schedule source: Bois
- e State Athletics | https://broncosports.com/sports/football/schedule/te
- xt/2026 | TV source: Boise State Athletics / ESPN fallback
+DESCRIPTION:TV: CBS Sports Network | Betting line: BOIS -23.5 | Season: 2
+ 026 | Schedule source: Boise State Athletics | https://broncosports.com/
+ sports/football/schedule/text/2026 | Rankings/odds source: ESPN | TV sou
+ rce: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 LOCATION:Albertsons Stadium\n1400 Bronco Ln\, Boise\, ID 83706
