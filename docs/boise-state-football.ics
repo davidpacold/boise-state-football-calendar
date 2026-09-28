@@ -27,14 +27,15 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:boisestate-football-2025-08-28@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20250828T000000Z
-SUMMARY:🔴 L 7-34 · Boise State at South Florida
+SUMMARY:🔴 L 7-34 · #22 Boise State at South Florida
 DTSTART;TZID=America/Denver:20250828T153000
 DTEND;TZID=America/Denver:20250828T193000
 DESCRIPTION:Final: L 7-34 | Season: 2025 | Schedule source: Boise State A
  thletics | https://broncosports.com/sports/football/schedule/text/2025 |
-  TV source: Boise State Athletics / ESPN fallback
+  Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN fa
+ llback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -57,14 +58,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-09-05@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20250905T000000Z
-SUMMARY:🟢 W 51-14 · Boise State vs Eastern Washington
+SUMMARY:🟢 W 51-14 · #22 Boise State vs Eastern Washington
 DTSTART;TZID=America/Denver:20250905T190000
 DTEND;TZID=America/Denver:20250905T230000
 DESCRIPTION:Final: W 51-14 | Season: 2025 | Schedule source: Boise State 
  Athletics | https://broncosports.com/sports/football/schedule/text/2025 
- | TV source: Boise State Athletics / ESPN fallback
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -87,14 +89,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-09-20@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20250920T000000Z
-SUMMARY:🟢 W 49-37 · Boise State at Air Force
+SUMMARY:🟢 W 49-37 · #22 Boise State at Air Force
 DTSTART;TZID=America/Denver:20250920T170000
 DTEND;TZID=America/Denver:20250920T210000
 DESCRIPTION:Final: W 49-37 | Season: 2025 | Schedule source: Boise State 
  Athletics | https://broncosports.com/sports/football/schedule/text/2025 
- | TV source: Boise State Athletics / ESPN fallback
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -117,14 +120,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-09-27@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20250927T000000Z
-SUMMARY:🟢 W 47-14 · Boise State vs App State
+SUMMARY:🟢 W 47-14 · #22 Boise State vs App State
 DTSTART;TZID=America/Denver:20250927T173000
 DTEND;TZID=America/Denver:20250927T213000
 DESCRIPTION:Final: W 47-14 | Season: 2025 | Schedule source: Boise State 
  Athletics | https://broncosports.com/sports/football/schedule/text/2025 
- | TV source: Boise State Athletics / ESPN fallback
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -147,9 +151,9 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-10-04@boise-state-football-calendar
-SEQUENCE:7
+SEQUENCE:8
 DTSTAMP:20251004T000000Z
-SUMMARY:🔴 L 7-28 · Boise State at #21/21 Notre Dame
+SUMMARY:🔴 L 7-28 · #22 Boise State at #21/21 Notre Dame
 DTSTART;TZID=America/Denver:20251004T133000
 DTEND;TZID=America/Denver:20251004T173000
 DESCRIPTION:Final: L 7-28 | Season: 2025 | Schedule source: Boise State A
@@ -172,14 +176,15 @@ LOCATION:South Bend\, Ind.
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-10-11@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20251011T000000Z
-SUMMARY:🟢 W 41-25 · Boise State vs New Mexico
+SUMMARY:🟢 W 41-25 · #22 Boise State vs New Mexico
 DTSTART;TZID=America/Denver:20251011T194500
 DTEND;TZID=America/Denver:20251011T234500
 DESCRIPTION:Final: W 41-25 | Season: 2025 | Schedule source: Boise State 
  Athletics | https://broncosports.com/sports/football/schedule/text/2025 
- | TV source: Boise State Athletics / ESPN fallback
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -202,14 +207,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-10-18@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20251018T000000Z
-SUMMARY:🟢 W 56-31 · Boise State vs UNLV
+SUMMARY:🟢 W 56-31 · #22 Boise State vs UNLV
 DTSTART;TZID=America/Denver:20251018T133000
 DTEND;TZID=America/Denver:20251018T173000
 DESCRIPTION:Final: W 56-31 | Season: 2025 | Schedule source: Boise State 
  Athletics | https://broncosports.com/sports/football/schedule/text/2025 
- | TV source: Boise State Athletics / ESPN fallback
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -232,14 +238,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-10-24@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20251024T000000Z
-SUMMARY:🟢 W 24-3 · Boise State at Nevada
+SUMMARY:🟢 W 24-3 · #22 Boise State at Nevada
 DTSTART;TZID=America/Denver:20251024T200000
 DTEND;TZID=America/Denver:20251025T000000
 DESCRIPTION:Final: W 24-3 | Season: 2025 | Schedule source: Boise State A
  thletics | https://broncosports.com/sports/football/schedule/text/2025 |
-  TV source: Boise State Athletics / ESPN fallback
+  Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN fa
+ llback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -262,14 +269,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-11-01@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20251101T000000Z
-SUMMARY:🔴 L 7-30 · Boise State vs Fresno State
+SUMMARY:🔴 L 7-30 · #22 Boise State vs Fresno State
 DTSTART;TZID=America/Denver:20251101T133000
 DTEND;TZID=America/Denver:20251101T173000
 DESCRIPTION:Final: L 7-30 | Season: 2025 | Schedule source: Boise State A
  thletics | https://broncosports.com/sports/football/schedule/text/2025 |
-  TV source: Boise State Athletics / ESPN fallback
+  Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN fa
+ llback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -292,14 +300,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-11-15@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20251115T000000Z
-SUMMARY:🔴 L 7-17 · Boise State at San Diego State
+SUMMARY:🔴 L 7-17 · #22 Boise State at San Diego State
 DTSTART;TZID=America/Denver:20251115T203000
 DTEND;TZID=America/Denver:20251116T003000
 DESCRIPTION:Final: L 7-17 | Season: 2025 | Schedule source: Boise State A
  thletics | https://broncosports.com/sports/football/schedule/text/2025 |
-  TV source: Boise State Athletics / ESPN fallback
+  Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN fa
+ llback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -322,14 +331,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-11-22@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20251122T000000Z
-SUMMARY:🟢 W 49-21 · Boise State vs Colorado State
+SUMMARY:🟢 W 49-21 · #22 Boise State vs Colorado State
 DTSTART;TZID=America/Denver:20251122T170000
 DTEND;TZID=America/Denver:20251122T210000
 DESCRIPTION:Final: W 49-21 | Season: 2025 | Schedule source: Boise State 
  Athletics | https://broncosports.com/sports/football/schedule/text/2025 
- | TV source: Boise State Athletics / ESPN fallback
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -352,14 +362,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-11-28@boise-state-football-calendar
-SEQUENCE:5
+SEQUENCE:6
 DTSTAMP:20251128T000000Z
-SUMMARY:🟢 W 25-24 · Boise State at Utah State
+SUMMARY:🟢 W 25-24 · #22 Boise State at Utah State
 DTSTART;TZID=America/Denver:20251128T140000
 DTEND;TZID=America/Denver:20251128T180000
 DESCRIPTION:Final: W 25-24 | Season: 2025 | Schedule source: Boise State 
  Athletics | https://broncosports.com/sports/football/schedule/text/2025 
- | TV source: Boise State Athletics / ESPN fallback
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -377,15 +388,15 @@ LOCATION:Logan\, Utah
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-12-05@boise-state-football-calendar
-SEQUENCE:6
+SEQUENCE:7
 DTSTAMP:20251205T000000Z
-SUMMARY:🟢 W 38-21 · Boise State vs UNLV
+SUMMARY:🟢 W 38-21 · #22 Boise State vs UNLV
 DTSTART;TZID=America/Denver:20251205T180000
 DTEND;TZID=America/Denver:20251205T220000
 DESCRIPTION:Mountain West Football Championship | Final: W 38-21 | Season
  : 2025 | Schedule source: Boise State Athletics | https://broncosports.c
- om/sports/football/schedule/text/2025 | TV source: Boise State Athletics
-  / ESPN fallback
+ om/sports/football/schedule/text/2025 | Rankings/odds source: ESPN | TV 
+ source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -408,15 +419,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-12-13@boise-state-football-calendar
-SEQUENCE:7
+SEQUENCE:8
 DTSTAMP:20251213T000000Z
-SUMMARY:🔴 L 10-38 · Boise State vs Washington
+SUMMARY:🔴 L 10-38 · #22 Boise State vs Washington
 DTSTART;TZID=America/Denver:20251213T180000
 DTEND;TZID=America/Denver:20251213T220000
 DESCRIPTION:Bucked Up LA Bowl Hosted by Gronk | Final: L 10-38 | Season: 
  2025 | Schedule source: Boise State Athletics | https://broncosports.com
- /sports/football/schedule/text/2025 | TV source: Boise State Athletics /
-  ESPN fallback
+ /sports/football/schedule/text/2025 | Rankings/odds source: ESPN | TV so
+ urce: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2025
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -434,9 +445,9 @@ LOCATION:Inglewood\, Calif. (SoFi Stadium)
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-09-05@boise-state-football-calendar
-SEQUENCE:11
+SEQUENCE:12
 DTSTAMP:20260905T000000Z
-SUMMARY:🔴 L 27-34 · Boise State at #2/2 Oregon
+SUMMARY:🔴 L 27-34 · #22 Boise State at #2/2 Oregon
 DTSTART;TZID=America/Denver:20260905T133000
 DTEND;TZID=America/Denver:20260905T173000
 DESCRIPTION:Final: L 27-34 | Season: 2026 | Schedule source: Boise State 
@@ -464,14 +475,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-09-12@boise-state-football-calendar
-SEQUENCE:12
+SEQUENCE:13
 DTSTAMP:20260912T000000Z
-SUMMARY:🟢 W 38-20 · Boise State vs Memphis
+SUMMARY:🟢 W 38-20 · #22 Boise State vs Memphis
 DTSTART;TZID=America/Denver:20260912T160000
 DTEND;TZID=America/Denver:20260912T200000
 DESCRIPTION:Final: W 38-20 | Season: 2026 | Schedule source: Boise State 
  Athletics | https://broncosports.com/sports/football/schedule/text/2026 
- | TV source: Boise State Athletics / ESPN fallback
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -494,9 +506,9 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-09-19@boise-state-football-calendar
-SEQUENCE:9
+SEQUENCE:10
 DTSTAMP:20260919T000000Z
-SUMMARY:🟢 W 38-24 · Boise State vs South Dakota
+SUMMARY:🟢 W 38-24 · #22 Boise State vs South Dakota
 DTSTART;TZID=America/Denver:20260919T200000
 DTEND;TZID=America/Denver:20260920T000000
 DESCRIPTION:Final: W 38-24 | Season: 2026 | Schedule source: Boise State 
@@ -525,16 +537,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-09-26@boise-state-football-calendar
-SEQUENCE:10
+SEQUENCE:11
 DTSTAMP:20260926T000000Z
-SUMMARY:🏈 Boise State at Western Michigan · 📺 ESPN2 · 🎲 BOIS -
- 7
+SUMMARY:🟢 W 32-7 · #22 Boise State at Western Michigan
 DTSTART;TZID=America/Denver:20260926T133000
 DTEND;TZID=America/Denver:20260926T173000
-DESCRIPTION:TV: ESPN2 | Betting line: BOIS -7 | Season: 2026 | Schedule s
- ource: Boise State Athletics | https://broncosports.com/sports/football/
- schedule/text/2026 | Rankings/odds source: ESPN | TV source: Boise State
-  Athletics / ESPN fallback
+DESCRIPTION:Final: W 32-7 | Season: 2026 | Schedule source: Boise State A
+ thletics | https://broncosports.com/sports/football/schedule/text/2026 |
+  Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN fa
+ llback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -557,14 +568,16 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-03@boise-state-football-calendar
-SEQUENCE:7
+SEQUENCE:8
 DTSTAMP:20261003T000000Z
-SUMMARY:🏈 Boise State vs Utah State · 📺 CBS Sports Network
+SUMMARY:🏈 #22 Boise State vs Utah State · 📺 CBS Sports Network · 
+ 🎲 BOIS -19.5
 DTSTART;TZID=America/Denver:20261003T173000
 DTEND;TZID=America/Denver:20261003T213000
-DESCRIPTION:TV: CBS Sports Network | Season: 2026 | Schedule source: Bois
- e State Athletics | https://broncosports.com/sports/football/schedule/te
- xt/2026 | TV source: Boise State Athletics / ESPN fallback
+DESCRIPTION:Boise State rank: #22 | TV: CBS Sports Network | Betting line
+ : BOIS -19.5 | Season: 2026 | Schedule source: Boise State Athletics | h
+ ttps://broncosports.com/sports/football/schedule/text/2026 | Rankings/od
+ ds source: ESPN | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -587,14 +600,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-10@boise-state-football-calendar
-SEQUENCE:7
+SEQUENCE:8
 DTSTAMP:20261010T000000Z
-SUMMARY:🏈 Boise State at Fresno State · 📺 The CW
+SUMMARY:🏈 #22 Boise State at Fresno State · 📺 The CW
 DTSTART;TZID=America/Denver:20261010T203000
 DTEND;TZID=America/Denver:20261011T003000
-DESCRIPTION:TV: The CW | Season: 2026 | Schedule source: Boise State Athl
- etics | https://broncosports.com/sports/football/schedule/text/2026 | TV
-  source: Boise State Athletics / ESPN fallback
+DESCRIPTION:Boise State rank: #22 | TV: The CW | Season: 2026 | Schedule 
+ source: Boise State Athletics | https://broncosports.com/sports/football
+ /schedule/text/2026 | Rankings/odds source: ESPN | TV source: Boise Stat
+ e Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -617,14 +631,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-24@boise-state-football-calendar
-SEQUENCE:7
+SEQUENCE:8
 DTSTAMP:20261024T000000Z
-SUMMARY:🏈 Boise State at Washington State · 📺 USA Network
+SUMMARY:🏈 #22 Boise State at Washington State · 📺 USA Network
 DTSTART;TZID=America/Denver:20261024T160000
 DTEND;TZID=America/Denver:20261024T200000
-DESCRIPTION:TV: USA Network | Season: 2026 | Schedule source: Boise State
-  Athletics | https://broncosports.com/sports/football/schedule/text/2026
-  | TV source: Boise State Athletics / ESPN fallback
+DESCRIPTION:Boise State rank: #22 | TV: USA Network | Season: 2026 | Sche
+ dule source: Boise State Athletics | https://broncosports.com/sports/foo
+ tball/schedule/text/2026 | Rankings/odds source: ESPN | TV source: Boise
+  State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -647,14 +662,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-31@boise-state-football-calendar
-SEQUENCE:7
+SEQUENCE:8
 DTSTAMP:20261031T000000Z
-SUMMARY:🏈 Boise State vs Texas State · 📺 The CW
+SUMMARY:🏈 #22 Boise State vs Texas State · 📺 The CW
 DTSTART;TZID=America/Denver:20261031T200000
 DTEND;TZID=America/Denver:20261101T000000
-DESCRIPTION:TV: The CW | Season: 2026 | Schedule source: Boise State Athl
- etics | https://broncosports.com/sports/football/schedule/text/2026 | TV
-  source: Boise State Athletics / ESPN fallback
+DESCRIPTION:Boise State rank: #22 | TV: The CW | Season: 2026 | Schedule 
+ source: Boise State Athletics | https://broncosports.com/sports/football
+ /schedule/text/2026 | Rankings/odds source: ESPN | TV source: Boise Stat
+ e Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -677,14 +693,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-11-07@boise-state-football-calendar
-SEQUENCE:7
+SEQUENCE:8
 DTSTAMP:20261107T000000Z
-SUMMARY:🏈 Boise State at Colorado State · 📺 USA Network
+SUMMARY:🏈 #22 Boise State at Colorado State · 📺 USA Network
 DTSTART;TZID=America/Denver:20261107T160000
 DTEND;TZID=America/Denver:20261107T200000
-DESCRIPTION:TV: USA Network | Season: 2026 | Schedule source: Boise State
-  Athletics | https://broncosports.com/sports/football/schedule/text/2026
-  | TV source: Boise State Athletics / ESPN fallback
+DESCRIPTION:Boise State rank: #22 | TV: USA Network | Season: 2026 | Sche
+ dule source: Boise State Athletics | https://broncosports.com/sports/foo
+ tball/schedule/text/2026 | Rankings/odds source: ESPN | TV source: Boise
+  State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -707,14 +724,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-11-14@boise-state-football-calendar
-SEQUENCE:7
+SEQUENCE:8
 DTSTAMP:20261114T000000Z
-SUMMARY:🏈 Boise State vs Oregon State · 📺 USA Network
+SUMMARY:🏈 #22 Boise State vs Oregon State · 📺 USA Network
 DTSTART;TZID=America/Denver:20261114T160000
 DTEND;TZID=America/Denver:20261114T200000
-DESCRIPTION:TV: USA Network | Season: 2026 | Schedule source: Boise State
-  Athletics | https://broncosports.com/sports/football/schedule/text/2026
-  | TV source: Boise State Athletics / ESPN fallback
+DESCRIPTION:Boise State rank: #22 | TV: USA Network | Season: 2026 | Sche
+ dule source: Boise State Athletics | https://broncosports.com/sports/foo
+ tball/schedule/text/2026 | Rankings/odds source: ESPN | TV source: Boise
+  State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -737,14 +755,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-11-21@boise-state-football-calendar
-SEQUENCE:7
+SEQUENCE:8
 DTSTAMP:20261121T000000Z
-SUMMARY:🏈 Boise State vs San Diego State · 📺 USA Network
+SUMMARY:🏈 #22 Boise State vs San Diego State · 📺 USA Network
 DTSTART;TZID=America/Denver:20261121T193000
 DTEND;TZID=America/Denver:20261121T233000
-DESCRIPTION:TV: USA Network | Season: 2026 | Schedule source: Boise State
-  Athletics | https://broncosports.com/sports/football/schedule/text/2026
-  | TV source: Boise State Athletics / ESPN fallback
+DESCRIPTION:Boise State rank: #22 | TV: USA Network | Season: 2026 | Sche
+ dule source: Boise State Athletics | https://broncosports.com/sports/foo
+ tball/schedule/text/2026 | Rankings/odds source: ESPN | TV source: Boise
+  State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -767,14 +786,14 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-11-28@boise-state-football-calendar
-SEQUENCE:7
+SEQUENCE:8
 DTSTAMP:20261128T000000Z
-SUMMARY:🏈 Boise State at Flex Game
+SUMMARY:🏈 #22 Boise State at Flex Game
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
-DESCRIPTION:Kickoff time TBA | Season: 2026 | Schedule source: Boise Stat
- e Athletics | https://broncosports.com/sports/football/schedule/text/202
- 6
+DESCRIPTION:Kickoff time TBA | Boise State rank: #22 | Season: 2026 | Sch
+ edule source: Boise State Athletics | https://broncosports.com/sports/fo
+ otball/schedule/text/2026 | Rankings/odds source: ESPN
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -786,15 +805,16 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-12-04@boise-state-football-calendar
-SEQUENCE:7
+SEQUENCE:8
 DTSTAMP:20261204T000000Z
-SUMMARY:🏈 Boise State vs Pac-12 Championship · 📺 CBS
+SUMMARY:🏈 #22 Boise State vs Pac-12 Championship · 📺 CBS
 DTSTART;TZID=America/Denver:20261204T180000
 DTEND;TZID=America/Denver:20261204T220000
-DESCRIPTION:Pac-12 Championship | TV: CBS | Appearance is conditional on 
- qualification | Season: 2026 | Schedule source: Boise State Athletics | 
- https://broncosports.com/sports/football/schedule/text/2026 | TV source:
-  Boise State Athletics / ESPN fallback
+DESCRIPTION:Pac-12 Championship | Boise State rank: #22 | TV: CBS | Appea
+ rance is conditional on qualification | Season: 2026 | Schedule source: 
+ Boise State Athletics | https://broncosports.com/sports/football/schedul
+ e/text/2026 | Rankings/odds source: ESPN | TV source: Boise State Athlet
+ ics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -810,15 +830,40 @@ DESCRIPTION:Boise State kickoff in 30 minutes
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:boisestate-football-2027-08-28@boise-state-football-calendar
+SEQUENCE:1
+DTSTAMP:20270828T000000Z
+SUMMARY:🏈 #22 Boise State vs Western Illinois
+DTSTART;VALUE=DATE:20270828
+DTEND;VALUE=DATE:20270829
+DESCRIPTION:Kickoff time TBA | Boise State rank: #22 | Season: 2027 | Sch
+ edule source: Boise State Athletics | https://broncosports.com/sports/fo
+ otball/schedule/text/2027 | Rankings/odds source: ESPN
+URL:https://broncosports.com/sports/football/schedule/text/2027
+TRANSP:TRANSPARENT
+X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
+BEGIN:VALARM
+ACTION:NONE
+X-APPLE-DEFAULT-ALARM:TRUE
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+END:VALARM
+LOCATION:Albertsons Stadium\n1400 Bronco Ln\, Boise\, ID 83706
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="1400 Bronco Ln, Boise, I
+ D 83706";X-APPLE-RADIUS=150;X-TITLE="Albertsons Stadium":geo:43.602800,-
+ 116.195800
+GEO:43.602800;-116.195800
+LAST-MODIFIED:20260928T190321Z
+END:VEVENT
+BEGIN:VEVENT
 UID:boisestate-football-2027-09-04@boise-state-football-calendar
-SEQUENCE:4
+SEQUENCE:5
 DTSTAMP:20270904T000000Z
-SUMMARY:🏈 Boise State at App State
+SUMMARY:🏈 #22 Boise State at App State
 DTSTART;VALUE=DATE:20270904
 DTEND;VALUE=DATE:20270905
-DESCRIPTION:Kickoff time TBA | Season: 2027 | Schedule source: Boise Stat
- e Athletics | https://broncosports.com/sports/football/schedule/text/202
- 7
+DESCRIPTION:Kickoff time TBA | Boise State rank: #22 | Season: 2027 | Sch
+ edule source: Boise State Athletics | https://broncosports.com/sports/fo
+ otball/schedule/text/2027 | Rankings/odds source: ESPN
 URL:https://broncosports.com/sports/football/schedule/text/2027
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -831,14 +876,14 @@ LOCATION:Boone\, N.C.
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2027-09-11@boise-state-football-calendar
-SEQUENCE:5
+SEQUENCE:6
 DTSTAMP:20270911T000000Z
-SUMMARY:🏈 Boise State vs USF
+SUMMARY:🏈 #22 Boise State vs USF
 DTSTART;VALUE=DATE:20270911
 DTEND;VALUE=DATE:20270912
-DESCRIPTION:Kickoff time TBA | Season: 2027 | Schedule source: Boise Stat
- e Athletics | https://broncosports.com/sports/football/schedule/text/202
- 7
+DESCRIPTION:Kickoff time TBA | Boise State rank: #22 | Season: 2027 | Sch
+ edule source: Boise State Athletics | https://broncosports.com/sports/fo
+ otball/schedule/text/2027 | Rankings/odds source: ESPN
 URL:https://broncosports.com/sports/football/schedule/text/2027
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
@@ -856,14 +901,14 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2027-09-18@boise-state-football-calendar
-SEQUENCE:4
+SEQUENCE:5
 DTSTAMP:20270918T000000Z
-SUMMARY:🏈 Boise State at Marshall
+SUMMARY:🏈 #22 Boise State at Marshall
 DTSTART;VALUE=DATE:20270918
 DTEND;VALUE=DATE:20270919
-DESCRIPTION:Kickoff time TBA | Season: 2027 | Schedule source: Boise Stat
- e Athletics | https://broncosports.com/sports/football/schedule/text/202
- 7
+DESCRIPTION:Kickoff time TBA | Boise State rank: #22 | Season: 2027 | Sch
+ edule source: Boise State Athletics | https://broncosports.com/sports/fo
+ otball/schedule/text/2027 | Rankings/odds source: ESPN
 URL:https://broncosports.com/sports/football/schedule/text/2027
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
