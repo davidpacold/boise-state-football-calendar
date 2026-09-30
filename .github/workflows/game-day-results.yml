@@ -1,0 +1,30 @@
+name: Check game-day final results
+
+on:
+  schedule:
+    - cron: "2-57/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      active: ${{ steps.game.outputs.active }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - id: game
+        run: python game_day_check.py
+  update:
+    needs: check
+    if: needs.check.outputs.active == 'true'
+    uses: ./.github/workflows/update-calendar.yml

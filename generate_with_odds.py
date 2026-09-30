@@ -254,6 +254,61 @@ def game_has_started(game: calendar.Game, now: datetime) -> bool:
     return now >= kickoff
 
 
+def previous_final_results() -> dict[str, str]:
+    if not calendar.OUTPUT_PATH.exists():
+        return {}
+    results = {}
+    uid = ""
+    for line in unfold_ics(calendar.OUTPUT_PATH.read_text(encoding="utf-8")):
+        if line == "BEGIN:VEVENT":
+            uid = ""
+        elif line.startswith("UID:"):
+            uid = line[4:]
+        elif uid and line.startswith("DESCRIPTION:"):
+            match = re.search(r"(?:^| \| )Final: ([WLT] \d+-\d+)(?: \| |$)", line[12:])
+            if match:
+                results[uid] = match.group(1)
+    return results
+
+
+def core_date_result(date_str: str) -> str:
+    """Use ESPN core scores when its public scoreboard endpoint is unavailable."""
+    def payload(url: str) -> dict:
+        response = espn_get(url.replace("http://", "https://"))
+        response.raise_for_status()
+        return response.json()
+
+    def resolve(value: dict) -> dict:
+        return payload(value["$ref"]) if value.get("$ref") else value
+
+    try:
+        listing = payload(f"{ESPN_CORE_BASE}/seasons/{date_str[:4]}/teams/{calendar.ESPN_TEAM_ID}/events?limit=50")
+        for item in listing.get("items") or []:
+            event = resolve(item)
+            if event_local_date(event) != date_str:
+                continue
+            for reference in event.get("competitions") or []:
+                competition = resolve(reference)
+                status = resolve(competition.get("status") or {})
+                if status.get("type", {}).get("completed") is not True:
+                    continue
+                scores = {}
+                for competitor in competition.get("competitors") or []:
+                    team_id = str(competitor.get("id") or competitor.get("team", {}).get("id"))
+                    score = competitor.get("score")
+                    if isinstance(score, dict):
+                        score = resolve(score).get("value")
+                    scores[team_id] = score
+                if calendar.ESPN_TEAM_ID in scores and len(scores) == 2:
+                    opponent_score = next(score for team, score in scores.items()
+                                          if team != calendar.ESPN_TEAM_ID)
+                    return calendar.score_from_espn(
+                        {"score": scores[calendar.ESPN_TEAM_ID]}, {"score": opponent_score}, True)
+    except (requests.RequestException, ValueError) as exc:
+        print(f"Warning: ESPN core result unavailable for {date_str}: {exc}")
+    return ""
+
+
 def rank_for(name: str, rankings: dict[str, int]) -> int | None:
     normalized = calendar.normalized_opponent(name)
     aliases = {
@@ -277,6 +332,7 @@ def hardened_enrich_games(games: list[calendar.Game]) -> list[calendar.Game]:
 
     rankings = fetch_ap_rankings()
     prior_lines = previous_betting_lines()
+    prior_results = previous_final_results()
     now = datetime.now(ZoneInfo(calendar.TIMEZONE))
     scoreboard_end = now.date() + timedelta(days=calendar.ESPN_SCOREBOARD_LOOKAHEAD_DAYS)
     scoreboard_cache: dict[str, dict] = {}
@@ -287,10 +343,10 @@ def hardened_enrich_games(games: list[calendar.Game]) -> list[calendar.Game]:
         game_date = datetime.strptime(game.date, "%Y-%m-%d").date()
         started = game_has_started(game, now)
 
-        if not started and now.date() <= game_date <= scoreboard_end:
+        if now.date() - timedelta(days=1) <= game_date <= scoreboard_end:
             if game.date not in scoreboard_cache:
                 fresh = calendar.fetch_espn_scoreboard_date(game.date)
-                if not fresh.get("betting_line"):
+                if not started and not fresh.get("betting_line"):
                     fresh = dict(fresh)
                     line = core_date_odds(game.date)
                     if line:
@@ -299,6 +355,9 @@ def hardened_enrich_games(games: list[calendar.Game]) -> list[calendar.Game]:
             info = calendar.merge_espn_info(info, scoreboard_cache[game.date])
 
         official_result = game.result if game.result and game.result != "-" else ""
+        if (started and now.date() - timedelta(days=1) <= game_date <= now.date()
+                and not official_result and not info.get("result") and game.uid not in prior_results):
+            info["result"] = core_date_result(game.date)
         betting_line = info.get("betting_line", "")
         if started:
             betting_line = prior_lines.get(game.uid, betting_line)
@@ -312,7 +371,7 @@ def hardened_enrich_games(games: list[calendar.Game]) -> list[calendar.Game]:
 
         enriched_games.append(calendar.replace(
             game,
-            result=official_result or info.get("result", ""),
+            result=official_result or info.get("result", "") or prior_results.get(game.uid, ""),
             boise_rank=boise_rank,
             opponent_rank=opponent_rank,
             betting_line=betting_line,
