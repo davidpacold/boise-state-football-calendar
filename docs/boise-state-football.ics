@@ -537,7 +537,7 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-09-26@boise-state-football-calendar
-SEQUENCE:11
+SEQUENCE:12
 DTSTAMP:20260926T000000Z
 SUMMARY:🟢 W 32-7 · #22 Boise State at Western Michigan
 DTSTART;TZID=America/Denver:20260926T133000
@@ -568,14 +568,14 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-03@boise-state-football-calendar
-SEQUENCE:8
+SEQUENCE:9
 DTSTAMP:20261003T000000Z
 SUMMARY:🏈 #22 Boise State vs Utah State · 📺 CBS Sports Network · 
- 🎲 BOIS -19.5
+ 🎲 BOIS -20.5
 DTSTART;TZID=America/Denver:20261003T173000
 DTEND;TZID=America/Denver:20261003T213000
 DESCRIPTION:Boise State rank: #22 | TV: CBS Sports Network | Betting line
- : BOIS -19.5 | Season: 2026 | Schedule source: Boise State Athletics | h
+ : BOIS -20.5 | Season: 2026 | Schedule source: Boise State Athletics | h
  ttps://broncosports.com/sports/football/schedule/text/2026 | Rankings/od
  ds source: ESPN | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
