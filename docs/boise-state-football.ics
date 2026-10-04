@@ -568,16 +568,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-03@boise-state-football-calendar
-SEQUENCE:9
+SEQUENCE:10
 DTSTAMP:20261003T000000Z
-SUMMARY:🏈 #22 Boise State vs Utah State · 📺 CBS Sports Network · 
- 🎲 BOIS -20.5
+SUMMARY:🟢 W 37-18 · #22 Boise State vs Utah State
 DTSTART;TZID=America/Denver:20261003T173000
 DTEND;TZID=America/Denver:20261003T213000
-DESCRIPTION:Boise State rank: #22 | TV: CBS Sports Network | Betting line
- : BOIS -20.5 | Season: 2026 | Schedule source: Boise State Athletics | h
- ttps://broncosports.com/sports/football/schedule/text/2026 | Rankings/od
- ds source: ESPN | TV source: Boise State Athletics / ESPN fallback
+DESCRIPTION:Final: W 37-18 | Season: 2026 | Schedule source: Boise State 
+ Athletics | https://broncosports.com/sports/football/schedule/text/2026 
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
