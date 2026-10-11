@@ -599,16 +599,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-10@boise-state-football-calendar
-SEQUENCE:9
+SEQUENCE:10
 DTSTAMP:20261010T000000Z
-SUMMARY:🏈 #23 Boise State at Fresno State · 📺 The CW · 🎲 BOIS 
- -6
+SUMMARY:🟢 W 38-31 · #23 Boise State at Fresno State
 DTSTART;TZID=America/Denver:20261010T203000
 DTEND;TZID=America/Denver:20261011T003000
-DESCRIPTION:Boise State rank: #23 | TV: The CW | Betting line: BOIS -6 | 
- Season: 2026 | Schedule source: Boise State Athletics | https://broncosp
- orts.com/sports/football/schedule/text/2026 | Rankings/odds source: ESPN
-  | TV source: Boise State Athletics / ESPN fallback
+DESCRIPTION:Final: W 38-31 | Season: 2026 | Schedule source: Boise State 
+ Athletics | https://broncosports.com/sports/football/schedule/text/2026 
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
