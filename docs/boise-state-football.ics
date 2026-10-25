@@ -630,16 +630,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-24@boise-state-football-calendar
-SEQUENCE:10
+SEQUENCE:11
 DTSTAMP:20261024T000000Z
-SUMMARY:🏈 #21 Boise State at Washington State · 📺 USA Network · 
- 🎲 BOIS -13.5
+SUMMARY:🟢 W 31-10 · #21 Boise State at Washington State
 DTSTART;TZID=America/Denver:20261024T160000
 DTEND;TZID=America/Denver:20261024T200000
-DESCRIPTION:Boise State rank: #21 | TV: USA Network | Betting line: BOIS 
- -13.5 | Season: 2026 | Schedule source: Boise State Athletics | https://
- broncosports.com/sports/football/schedule/text/2026 | Rankings/odds sour
- ce: ESPN | TV source: Boise State Athletics / ESPN fallback
+DESCRIPTION:Final: W 31-10 | Season: 2026 | Schedule source: Boise State 
+ Athletics | https://broncosports.com/sports/football/schedule/text/2026 
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
