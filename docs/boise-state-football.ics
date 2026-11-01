@@ -661,16 +661,15 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-31@boise-state-football-calendar
-SEQUENCE:11
+SEQUENCE:12
 DTSTAMP:20261031T000000Z
-SUMMARY:🏈 #20 Boise State vs Texas State · 📺 The CW · 🎲 BOIS -
- 11.5
+SUMMARY:🟢 W 46-45 · #20 Boise State vs Texas State
 DTSTART;TZID=America/Denver:20261031T200000
 DTEND;TZID=America/Denver:20261101T000000
-DESCRIPTION:Boise State rank: #20 | TV: The CW | Betting line: BOIS -11.5
-  | Season: 2026 | Schedule source: Boise State Athletics | https://bronc
- osports.com/sports/football/schedule/text/2026 | Rankings/odds source: E
- SPN | TV source: Boise State Athletics / ESPN fallback
+DESCRIPTION:Final: W 46-45 | Season: 2026 | Schedule source: Boise State 
+ Athletics | https://broncosports.com/sports/football/schedule/text/2026 
+ | Rankings/odds source: ESPN | TV source: Boise State Athletics / ESPN f
+ allback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
