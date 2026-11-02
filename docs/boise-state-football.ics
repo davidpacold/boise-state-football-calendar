@@ -151,7 +151,7 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-10-04@boise-state-football-calendar
-SEQUENCE:12
+SEQUENCE:13
 DTSTAMP:20251004T000000Z
 SUMMARY:🔴 L 7-28 · #20 Boise State at #21/21 Notre Dame
 DTSTART;TZID=America/Denver:20251004T133000
@@ -176,9 +176,9 @@ LOCATION:South Bend\, Ind.
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2025-10-11@boise-state-football-calendar
-SEQUENCE:10
+SEQUENCE:11
 DTSTAMP:20251011T000000Z
-SUMMARY:🟢 W 41-25 · #20 Boise State vs New Mexico
+SUMMARY:🟢 W 41-25 · #20 Boise State vs #22 New Mexico
 DTSTART;TZID=America/Denver:20251011T194500
 DTEND;TZID=America/Denver:20251011T234500
 DESCRIPTION:Final: W 41-25 | Season: 2025 | Schedule source: Boise State 
@@ -661,7 +661,7 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-10-31@boise-state-football-calendar
-SEQUENCE:12
+SEQUENCE:13
 DTSTAMP:20261031T000000Z
 SUMMARY:🟢 W 46-45 · #20 Boise State vs Texas State
 DTSTART;TZID=America/Denver:20261031T200000
@@ -692,15 +692,16 @@ LAST-MODIFIED:20260917T005631Z
 END:VEVENT
 BEGIN:VEVENT
 UID:boisestate-football-2026-11-07@boise-state-football-calendar
-SEQUENCE:11
+SEQUENCE:12
 DTSTAMP:20261107T000000Z
-SUMMARY:🏈 #20 Boise State at Colorado State · 📺 USA Network
+SUMMARY:🏈 #20 Boise State at Colorado State · 📺 USA Network · 
+ 🎲 BOIS -17.5
 DTSTART;TZID=America/Denver:20261107T160000
 DTEND;TZID=America/Denver:20261107T200000
-DESCRIPTION:Boise State rank: #20 | TV: USA Network | Season: 2026 | Sche
- dule source: Boise State Athletics | https://broncosports.com/sports/foo
- tball/schedule/text/2026 | Rankings/odds source: ESPN | TV source: Boise
-  State Athletics / ESPN fallback
+DESCRIPTION:Boise State rank: #20 | TV: USA Network | Betting line: BOIS 
+ -17.5 | Season: 2026 | Schedule source: Boise State Athletics | https://
+ broncosports.com/sports/football/schedule/text/2026 | Rankings/odds sour
+ ce: ESPN | TV source: Boise State Athletics / ESPN fallback
 URL:https://broncosports.com/sports/football/schedule/text/2026
 TRANSP:TRANSPARENT
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:DISABLED
