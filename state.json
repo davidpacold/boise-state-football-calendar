@@ -1,168 +1,160 @@
 {
   "events": {
-    "boisestate-football-2025-08-30@boise-state-football-calendar": {
-      "fingerprint": "89045c8c91af1901d8b494f87e1e5ea43093ee417c408daef65144d3376662a1",
-      "location_fingerprint": "12cb10b2afbd475fbd899af2c09b392b8cf91c029607ff707d51d7c62716b8ac",
-      "location_modified": "20261116T212902Z",
-      "sequence": 2
+    "boisestate-football-2025-08-23@boise-state-football-calendar": {
+      "fingerprint": "db6adbf946d0102facf8e7ab6fae348b26441633e7aafa4f3c6b7a7082603fbf",
+      "location_fingerprint": "0703ef3eb0752637b29cd76d20c2c1cdce180791dc0c9a219ca5807c38aab167",
+      "sequence": 0
+    },
+    "boisestate-football-2025-08-29@boise-state-football-calendar": {
+      "fingerprint": "7de783c199cb0ee17d49f001ecfc7949ed58ff4cf387d7c2440799d66f00e0c9",
+      "location_fingerprint": "0703ef3eb0752637b29cd76d20c2c1cdce180791dc0c9a219ca5807c38aab167",
+      "sequence": 0
     },
     "boisestate-football-2025-09-06@boise-state-football-calendar": {
-      "fingerprint": "61d1ff42020baf934d2507b12336b5f94a1923502e23f16d68cf6628576d054e",
-      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
-      "location_modified": "20261116T212902Z",
-      "sequence": 2
-    },
-    "boisestate-football-2025-09-13@boise-state-football-calendar": {
-      "fingerprint": "10e7bb3404a19bb72a214cd2c688958fa69351d4723cbfb56d607148b38e75ac",
-      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
-      "location_modified": "20261116T212902Z",
-      "sequence": 2
+      "fingerprint": "e63c3f1679d071fc7557ff4d2203398642d7eef9454c1c200e56973fb58525b9",
+      "location_fingerprint": "67a7fbb460b5caa1b75fcd11cd65ac534ae9a4c9764364ca0f7534e5f8d235ee",
+      "location_modified": "20261122T022410Z",
+      "sequence": 4
     },
     "boisestate-football-2025-09-20@boise-state-football-calendar": {
-      "fingerprint": "f3b0f344b097099d2366b9cac85344da9fe9701df3eef6910bcbc3ab90967567",
-      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
-      "location_modified": "20261116T212902Z",
-      "sequence": 14
-    },
-    "boisestate-football-2025-10-04@boise-state-football-calendar": {
-      "fingerprint": "46d5cb1c79177f49f6b8ba8e25a825b5f0120a5082d6dd71473a330bb6992fae",
-      "location_fingerprint": "27d18725b90cf269b2b9e69432242e33b55cac9f5f0caabb242572cb26ba002b",
-      "location_modified": "20261116T212902Z",
-      "sequence": 17
-    },
-    "boisestate-football-2025-10-11@boise-state-football-calendar": {
-      "fingerprint": "3b45bf97db6b4b0dc2de3fdf87a3428b57fa86d4c2443dd5f3a57886bf213b8b",
-      "location_fingerprint": "8011eaa6129e8a271f3951374bc8041796deea593920f55ffe865c10a9234716",
-      "location_modified": "20261116T212902Z",
-      "sequence": 15
-    },
-    "boisestate-football-2025-10-18@boise-state-football-calendar": {
-      "fingerprint": "f64b1679a7faf5036a5e02c8148d65dbf7d5175d9cd7bc345b38bc53c3bcfb7a",
-      "location_fingerprint": "a79cfceab95deb36c8574a4dd130358c6c18270f3d980aa8e072a909dba89a2c",
-      "location_modified": "20261116T212902Z",
-      "sequence": 14
-    },
-    "boisestate-football-2025-10-25@boise-state-football-calendar": {
-      "fingerprint": "e4f421f84166f5e017a7e7c0082df8e97f6e9dcbd3c96953f1b8496fc6ed6aca",
-      "location_fingerprint": "9168eabc9850dc91674dfa3ec3ef562329ee343c47fca151e39c16746836fe00",
-      "location_modified": "20261116T212902Z",
-      "sequence": 2
-    },
-    "boisestate-football-2025-11-01@boise-state-football-calendar": {
-      "fingerprint": "b55321c2d8949395c8303763de605a2b636cbb94fbee8c3cca15fc997df00ead",
-      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
-      "location_modified": "20261116T212902Z",
-      "sequence": 14
-    },
-    "boisestate-football-2025-11-15@boise-state-football-calendar": {
-      "fingerprint": "4f7e8a7274cae73aa695de8bdabb9c76dc44015b8e43711fb5d646c9998fbe91",
-      "location_fingerprint": "1d3217671c87caa315cea30f7c51f16b34a3ac264747882502c68b8dcfb4cb2d",
-      "location_modified": "20261116T212902Z",
-      "sequence": 14
-    },
-    "boisestate-football-2025-11-22@boise-state-football-calendar": {
-      "fingerprint": "fd1216b68e6bf49d983cbcc0fe9acc54c8f439b7479bb5c81b26bb699197a26a",
-      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
-      "sequence": 0
-    },
-    "boisestate-football-2025-11-28@boise-state-football-calendar": {
-      "fingerprint": "ef5e1c78e0fc784c9b44dd317c2b65fa6d7ecd52433109386bb673317f97bc82",
-      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
-      "sequence": 0
-    },
-    "boisestate-football-2025-12-31@boise-state-football-calendar": {
-      "fingerprint": "f913a80827af3f081173207e3fdf00b14e89898bc873e48ce39e13ace7b6ea81",
-      "location_fingerprint": "03d0bfdb93d6b99e575c5a8d14f5a9e62f67aa150e7d51cc7c739bab38bea201",
-      "sequence": 0
-    },
-    "boisestate-football-2026-08-29@boise-state-football-calendar": {
-      "fingerprint": "126802245da52de26d7be984cffc8804a8577b55d88b53fa79d6fb9af972fbaf",
-      "location_fingerprint": "b67b8341fb7b03a32b22f40484516605e4323b502251a5fb702ed2dc2e01493c",
-      "sequence": 0
-    },
-    "boisestate-football-2026-09-05@boise-state-football-calendar": {
-      "fingerprint": "118ff4fc5a811f56823b9fd09ebd50ed400370438ea5e05b9fef981d7ec86762",
-      "location_fingerprint": "1513f6bc8066275184f029ff59a35d53c4f691e1404ddd54cb035fd3d18c0586",
-      "sequence": 0
-    },
-    "boisestate-football-2026-09-12@boise-state-football-calendar": {
-      "fingerprint": "34def314a8850e587a3003044d27ef9d3cbaefdc6f49f4aca5948a767a166f2d",
-      "location_fingerprint": "b67b8341fb7b03a32b22f40484516605e4323b502251a5fb702ed2dc2e01493c",
-      "location_modified": "20261116T212902Z",
-      "sequence": 20
-    },
-    "boisestate-football-2026-09-19@boise-state-football-calendar": {
-      "fingerprint": "7605c18a1ab25845c4c55c8bc512ff5d35681113407f004268b2acc240ac73ec",
-      "location_fingerprint": "b67b8341fb7b03a32b22f40484516605e4323b502251a5fb702ed2dc2e01493c",
-      "location_modified": "20261116T212902Z",
-      "sequence": 17
-    },
-    "boisestate-football-2026-09-26@boise-state-football-calendar": {
-      "fingerprint": "4ebf2396a5e23e2b82465a2f02e84f12964e253db7d195f0f56d00df72490e26",
-      "location_fingerprint": "b67b8341fb7b03a32b22f40484516605e4323b502251a5fb702ed2dc2e01493c",
-      "location_modified": "20261116T212902Z",
-      "sequence": 19
-    },
-    "boisestate-football-2026-10-03@boise-state-football-calendar": {
-      "fingerprint": "bff2e4a0f4bd443c84e87b68ec3eee2e5ee13ef7dd4c815d187d37a93c654492",
-      "location_fingerprint": "9a48aa59504618aff6a31a2902d36d2a089707753843ddb587d4d01c69d2a0b7",
-      "location_modified": "20261116T212902Z",
-      "sequence": 17
-    },
-    "boisestate-football-2026-10-17@boise-state-football-calendar": {
-      "fingerprint": "aef0a4418fbe5f0debb70c0ad5b84778a4224462013f56380ae18fd44b37369c",
-      "location_fingerprint": "ec5228ea553cfe6c5c610b4433892321c52545fde7648608393566c2d694b044",
-      "location_modified": "20261116T212902Z",
-      "sequence": 2
-    },
-    "boisestate-football-2026-10-24@boise-state-football-calendar": {
-      "fingerprint": "67316b095e12288867a3d358f59ed54ea17c453be0f884b5835d3a249d10b4ed",
-      "location_fingerprint": "b67b8341fb7b03a32b22f40484516605e4323b502251a5fb702ed2dc2e01493c",
-      "sequence": 0
-    },
-    "boisestate-football-2026-10-31@boise-state-football-calendar": {
-      "fingerprint": "05013c48890c3325a0df19e4bb3b475afc06f2a162f0f035d3bdb78cbd73592d",
-      "location_fingerprint": "b67b8341fb7b03a32b22f40484516605e4323b502251a5fb702ed2dc2e01493c",
-      "location_modified": "20261116T212902Z",
-      "sequence": 17
-    },
-    "boisestate-football-2026-11-07@boise-state-football-calendar": {
-      "fingerprint": "4eb3638c6e23e48eeafa7207a70d196bd11cc7d1b71583aeaf32abbed376534b",
-      "location_fingerprint": "cc590a71affa0da3fefdcb1dfdd696005d92fd7e6fb5b9155727268573308cfc",
-      "location_modified": "20261116T212902Z",
+      "fingerprint": "d4888476d2eb8d49f1a8ab467c98741c3a2ddcb0c61e946a363dc22c456d100f",
+      "location_fingerprint": "0703ef3eb0752637b29cd76d20c2c1cdce180791dc0c9a219ca5807c38aab167",
+      "location_modified": "20261122T022410Z",
       "sequence": 16
     },
+    "boisestate-football-2025-09-27@boise-state-football-calendar": {
+      "fingerprint": "6ca36b2912c7fc7332b477abdce4482ca9c95b77c57caad0186216f312382da7",
+      "location_fingerprint": "0703ef3eb0752637b29cd76d20c2c1cdce180791dc0c9a219ca5807c38aab167",
+      "sequence": 0
+    },
+    "boisestate-football-2025-10-04@boise-state-football-calendar": {
+      "fingerprint": "cc23bdaa62830b0ee249c434c1479277f15495138e5cca75611567f02f4a7e7a",
+      "location_fingerprint": "0a4e8413e038a9c27f6b27b3e2997a2d7f81f481f196ee8d9e81dd0dc03e6ef1",
+      "location_modified": "20261122T022410Z",
+      "sequence": 19
+    },
+    "boisestate-football-2025-10-11@boise-state-football-calendar": {
+      "fingerprint": "bf5c68852358f880bcda916bb94d108d9cea149c63f004984ccba7ba7e4662b2",
+      "location_fingerprint": "537bcec1923d9d87c7ad865b72043698a8ceb34eb4d9efba2502468523780ae7",
+      "location_modified": "20261122T022410Z",
+      "sequence": 17
+    },
+    "boisestate-football-2025-10-25@boise-state-football-calendar": {
+      "fingerprint": "2ba98e55a88debda2ddc713624f6247298bc847117b804f8b3a7a57ab88a43a2",
+      "location_fingerprint": "0703ef3eb0752637b29cd76d20c2c1cdce180791dc0c9a219ca5807c38aab167",
+      "location_modified": "20261122T022410Z",
+      "sequence": 4
+    },
+    "boisestate-football-2025-11-01@boise-state-football-calendar": {
+      "fingerprint": "f19cf344b1fff2057c871aa420624338c56fe7c475551c7689144c336d2b7852",
+      "location_fingerprint": "0703ef3eb0752637b29cd76d20c2c1cdce180791dc0c9a219ca5807c38aab167",
+      "location_modified": "20261122T022410Z",
+      "sequence": 16
+    },
+    "boisestate-football-2025-11-08@boise-state-football-calendar": {
+      "fingerprint": "6344d607e85aacdf6a53b4a72412d53dc75fb1b8aada90cf56b62a33b8f1ef1a",
+      "location_fingerprint": "3b3c99b69a26b6180818a2c478d1b518833f46b051aeca96a8a1e2b33962942e",
+      "sequence": 0
+    },
+    "boisestate-football-2025-11-22@boise-state-football-calendar": {
+      "fingerprint": "f04ea799fe718789a8ac902823c04ab127354a1478d8b01d2261ba3a020bca1c",
+      "location_fingerprint": "18897a3ac704012711aecfc785f839a3109b7a1653784cc6554dd3ae618c64c1",
+      "location_modified": "20261122T022410Z",
+      "sequence": 2
+    },
+    "boisestate-football-2025-11-28@boise-state-football-calendar": {
+      "fingerprint": "bfc82c152e321fb2755ef0f408725fc2ff2843034ac874f770711eb4298623ef",
+      "location_fingerprint": "0703ef3eb0752637b29cd76d20c2c1cdce180791dc0c9a219ca5807c38aab167",
+      "location_modified": "20261122T022410Z",
+      "sequence": 2
+    },
+    "boisestate-football-2026-09-05@boise-state-football-calendar": {
+      "fingerprint": "9cfa64e14d5a3c565919582a81d0648fffa1019da0dfcb595c1fe8a3bdb6e920",
+      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
+      "location_modified": "20261122T022410Z",
+      "sequence": 2
+    },
+    "boisestate-football-2026-09-12@boise-state-football-calendar": {
+      "fingerprint": "9c14c00817f8c30a4572dbd8fef3559dc70cfceb08eed4b0dd61d1fec216bb62",
+      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
+      "location_modified": "20261122T022410Z",
+      "sequence": 22
+    },
+    "boisestate-football-2026-09-19@boise-state-football-calendar": {
+      "fingerprint": "48f26c5b3c1db5b5b4af83e7934b2dc299890d10cec8f52ea9a8bb28cc161974",
+      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
+      "location_modified": "20261122T022410Z",
+      "sequence": 19
+    },
+    "boisestate-football-2026-09-26@boise-state-football-calendar": {
+      "fingerprint": "963a1aaa8c99ffb6df88227b075b498b9a8c933b369ce9a17d64a2d7a7be1ab2",
+      "location_fingerprint": "b8544870c1aafe46b98fd1d71afa8da8d3dcd048c1af7806a935ae93f1b4cc29",
+      "location_modified": "20261122T022410Z",
+      "sequence": 21
+    },
+    "boisestate-football-2026-10-10@boise-state-football-calendar": {
+      "fingerprint": "698711aacf414785e8cb9b4d028fa6d82912c6348363a6447a6b75274416a31e",
+      "location_fingerprint": "8011eaa6129e8a271f3951374bc8041796deea593920f55ffe865c10a9234716",
+      "sequence": 0
+    },
+    "boisestate-football-2026-10-17@boise-state-football-calendar": {
+      "fingerprint": "c42f0f34d09ad67968b8a146fe88741395543da6b61d9b5e65533e9bd36beaca",
+      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
+      "location_modified": "20261122T022410Z",
+      "sequence": 4
+    },
+    "boisestate-football-2026-10-24@boise-state-football-calendar": {
+      "fingerprint": "b5f62a379eb21e3749637e0bc91845009bb8781820b05c2e8c79b7c8a5e8cf77",
+      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
+      "location_modified": "20261122T022410Z",
+      "sequence": 2
+    },
+    "boisestate-football-2026-10-31@boise-state-football-calendar": {
+      "fingerprint": "d17ac145fc166de66beae2dd0458d21dd78836603b1c45d224d423b5384e6457",
+      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
+      "location_modified": "20261122T022410Z",
+      "sequence": 19
+    },
+    "boisestate-football-2026-11-07@boise-state-football-calendar": {
+      "fingerprint": "9686503e51e95de787fe3f409778762aa2302542da343f97dd1f2545f223e7b6",
+      "location_fingerprint": "390891de64ad71b7fdbf238ba74ef3b44b60d832c865b0634326d89810a03e63",
+      "location_modified": "20261122T022410Z",
+      "sequence": 18
+    },
     "boisestate-football-2026-11-14@boise-state-football-calendar": {
-      "fingerprint": "4878f4441d301db261d711ad4bc13c1a4e41a1f4d1210b4afa2a7b428be3a02b",
-      "location_fingerprint": "1166c3371cede522e79e11bc7a02425e4071e3250e29d5b5d8f8d95392b462f1",
-      "location_modified": "20261116T212902Z",
-      "sequence": 15
+      "fingerprint": "4481f59ce6efda2c68fcda48907bccaf5629e6c16affe832a95d0ca0a019a332",
+      "location_fingerprint": "5ef544a815b2074f4c2d63301d1e432399870a73758bc0ebeb2cbc9e46d5dc19",
+      "location_modified": "20261122T022410Z",
+      "sequence": 17
     },
     "boisestate-football-2026-11-21@boise-state-football-calendar": {
-      "fingerprint": "79058c64f476b6efd7771aa66434e413d51cc4c673d12ae3ca2d5442f5003ebe",
-      "location_fingerprint": "b67b8341fb7b03a32b22f40484516605e4323b502251a5fb702ed2dc2e01493c",
-      "location_modified": "20261116T212902Z",
-      "sequence": 15
+      "fingerprint": "c1fabb322641f9d84f45cd3889b3f3026a9249b1bf39a9f6801e02f00d5bc6a6",
+      "location_fingerprint": "6da8581429b24deeb0b9b4f48831ed8aced6bc58323309c363dd2d51c48d04ae",
+      "location_modified": "20261122T022410Z",
+      "sequence": 17
     },
-    "boisestate-football-2027-09-04@boise-state-football-calendar": {
-      "fingerprint": "59446b7042802b0f4735f06d073ea2abb8d920cdb6c94aedd24f441716d236b5",
-      "location_fingerprint": "1568158453ecb92e800ba4a72e522cefb9a386c607ec31a5fad95fc4fcc8b1a2",
+    "boisestate-football-2026-11-27@boise-state-football-calendar": {
+      "fingerprint": "28e0ab1dcba2236d8a043fed3c4bbfbefc240738c41b593896a434ea6bb930c1",
+      "location_fingerprint": "30226af78f47f88369846f24f73b3290cb0ae6b2074f8c8aa9133053afcc4aeb",
       "sequence": 0
     },
     "boisestate-football-2027-09-11@boise-state-football-calendar": {
-      "fingerprint": "50a66f49e870a3f7435f2afc4fa766b7895c1907be7d63961f27891f6a39ba92",
-      "location_fingerprint": "7433bbb713199a23a0b5708c211dae31097fcc5100cf29be3ef54ae5ceb1522b",
-      "sequence": 0
+      "fingerprint": "85d8181ee989d4295f95b57ec411dc4e44a97da0ed5321eecbb0531a1463fdff",
+      "location_fingerprint": "fe5235b24300277c309f04a01f860e26b037e98001322583fc007e6800b1f486",
+      "location_modified": "20261122T022410Z",
+      "sequence": 2
     },
     "boisestate-football-2027-09-18@boise-state-football-calendar": {
-      "fingerprint": "15842102a06f8f7137c00db475c3f87cb2d424bc275113e8b6ff2ebaa5657386",
-      "location_fingerprint": "cd3a0a89d0e25d5314a1327cc85d3b0d881612cec40aab6efa8bd1238cf7e6c6",
-      "sequence": 0
+      "fingerprint": "9be05f566a17c597a2797c5bf4e26e8e51d01248b3dc189829ea7a8a0c846a60",
+      "location_fingerprint": "691a5bd0d7a546d109321b6a560a254d7e6b95544ef2c15eb4196d2dc69daff8",
+      "location_modified": "20261122T022410Z",
+      "sequence": 2
     },
     "boisestate-football-2027-09-25@boise-state-football-calendar": {
-      "fingerprint": "2a3b3a2dfc10d2e19bd910d6a858be7e5a7eec377cf3babec0602119f4e79238",
-      "location_fingerprint": "1568158453ecb92e800ba4a72e522cefb9a386c607ec31a5fad95fc4fcc8b1a2",
-      "sequence": 0
+      "fingerprint": "0f46a17c90a154e79eb4137decdc66c4a8c3f7067e5f0962b98e4a84023eeb29",
+      "location_fingerprint": "fe5235b24300277c309f04a01f860e26b037e98001322583fc007e6800b1f486",
+      "location_modified": "20261122T022410Z",
+      "sequence": 2
     }
   }
 }
